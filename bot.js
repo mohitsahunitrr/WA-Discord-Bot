@@ -1221,8 +1221,9 @@ const commands = {
 			radioQueue("422898611106480139");
 			break;			
 		case "test":
-			let testRaw = msg.content.split(' ')[2];
-			msg.channel.send('Search String: '+testRaw);
+			let command = msg.substr(0,msg.indexOf(' '));
+			let rest = msg.substr(msg.indexOf(' ')+1)
+			msg.channel.send('Command: '+command+' Rest: '+rest);
 			break;
 		case "play":
 			//msg.delete(1000);
