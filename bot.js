@@ -20,7 +20,6 @@ http = require("http");
 
 
 client = new Client();
-var music = require('./modules/music.js');
 var sys = require('util');
 var exec = require('child_process').exec;
 var cluster = require('cluster');
