@@ -1,0 +1,13 @@
+node_modules
+node_modules/
+config.json
+config-jr.json
+package-lock.json
+tps.sh
+lastChannel
+assets/public/music/*.mp3
+assets/public/music/temp/*.mp3
+assets/public/youtube/*.mp4
+assets/public/youtube/temp/*.mp4
+*.mp3
+*.mp4
