@@ -1779,7 +1779,7 @@ const commands = {
 				conJoinMC.query("SELECT * FROM `player_experience`,`player_time`,`player_accounts`,`permissions_inheritance` WHERE permissions_inheritance.child = player_accounts.player_uuid AND player_experience.player_name = '"+player+"' AND player_accounts.player_name = '"+player+"' AND player_time.playerName = '"+player+"';", function(err,rows) { 
 					if(err) { 
 						console.log("MySQL Error: "+err); 
-						msg.channel.send("<:main_computer:420575980198035456> <:barcode:420860838438502400>  `[Main Computer] Bot @ WA.Net# Not enough information for "+mcUser+" yet, give it some time...`");
+						msg.channel.send("<:main_computer:420575980198035456> <:barcode:420860838438502400>  `[Main Computer] Bot @ WA.Net# Not enough information for "+player+" yet, give it some time...`");
 						return true;
 					} 
 					if (!rows[0]) {
@@ -1802,7 +1802,7 @@ const commands = {
 						msg.channel.send(playerQueryIntro, playerEmbed);
 						return true;
 					} else {
-						msg.channel.send("<:main_computer:420575980198035456> <:barcode:420860838438502400>  `[Main Computer] Bot @ WA.Net# Not enough information for "+mcUser+" yet, give it some time...`");
+						msg.channel.send("<:main_computer:420575980198035456> <:barcode:420860838438502400>  `[Main Computer] Bot @ WA.Net# Not enough information for "+player+" yet, give it some time...`");
 						return true;
 					}
 					var mcUser = rows[0].playerName;
