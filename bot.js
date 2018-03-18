@@ -1720,7 +1720,7 @@ const commands = {
 						var playerEmbed = {embed: {
 							color: 0xff8000,
 							author: {
-								name: bot_nickname+" - Identification Card",
+								name: "WA.Net - Identification Card",
 								icon_url: "https://minotar.net/avatar/"+mcUser+"/200.png"
 							},
 							"thumbnail": {
@@ -1787,7 +1787,7 @@ const commands = {
 						var playerEmbed = {embed: {
 							color: 0xff8000,
 							author: {
-								name: bot_nickname+" - Identification Card",
+								name: "WA.Net - Identification Card",
 								icon_url: "https://minotar.net/avatar/"+player+"/200.png"
 							},
 							"thumbnail": {
@@ -1862,7 +1862,7 @@ const commands = {
 					var playerEmbed = {embed: {
 						color: 0xff8000,
 						author: {
-							name: bot_nickname+" - Identification Card",
+							name: "WA.Net - Identification Card",
 							icon_url: "https://minotar.net/avatar/"+mcUser+"/200.png"
 						},
 						"thumbnail": {
@@ -1967,7 +1967,7 @@ const commands = {
 						var playerEmbed = {embed: {
 							color: 0xff8000,
 							author: {
-								name: bot_nickname+" - Identification Card",
+								name: "WA.Net - Identification Card",
 								icon_url: "https://minotar.net/avatar/"+mcUser+"/200.png"
 							},
 							"thumbnail": {
