@@ -1221,9 +1221,8 @@ const commands = {
 			radioQueue("422898611106480139");
 			break;			
 		case "test":
-			let command = msg.substr(0,msg.indexOf(' '));
-			let rest = msg.substr(msg.indexOf(' ')+1)
-			msg.channel.send('Command: '+command+' Rest: '+rest);
+			let testRaw = msg.content.split(' ')[2];
+			msg.channel.send('Search String: '+testRaw);
 			break;
 		case "play":
 			//msg.delete(1000);
@@ -2169,12 +2168,10 @@ client.on('ready', () => {
 client.on('message', msg => {
 
 	//console.log("["+logTimestamp+"] "+msg.author.username+"("+msg.author.id+") "+msg);
-	if (!msg.content.startsWith(bot_prefix)) { 
-	} else {
+
 		if (commands.hasOwnProperty(msg.content.toLowerCase().slice(bot_prefix.length).split(' ')[0])) {
 			commands[msg.content.toLowerCase().slice(bot_prefix.length).split(' ')[0]](msg);
 		}
-	}
 	
 });
 
