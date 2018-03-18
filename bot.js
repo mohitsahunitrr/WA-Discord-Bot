@@ -1726,7 +1726,7 @@ const commands = {
 							"thumbnail": {
 								"url": "https://minotar.net/body/"+mcUser+"/200.png",
 							},
-							description: "`Player Name` "+mcUser+"\n`Rank` "+rank+"\n`Identification Number` "+uuidSecure+"\n\n<:health:422012053092564992> `Current Health` NA\n<:xp:422013876847116289> `Current Level` "+xp_exp_lvl+"\n<:xp:422013876847116289> `XP to next Level` "+xp_exp_to_level+"\n<:xp:422013876847116289> `Current XP Level` "+xp_total_exp+"\n<:credit:422009800256258058> `Credit Balance` "+bal+"\n<:op:422010121271508997> `System Operator Status` Disabled\n\n`Fleet` N/A\n`Towns` "+townsPretty+"\n\n"+cleanOut,				
+							description: "`Player Name` "+mcUser+"\n`Rank` "+rank+"\n`Identification Number` "+uuidSecure+"\n\n<:health:422012053092564992> `Current Health` NA\n<:xp:422013876847116289> `Current Level` "+xp_exp_lvl+"\n<:xp:422013876847116289> `XP to next Level` "+xp_exp_to_level+"\n<:xp:422013876847116289> `Current XP Level` "+xp_total_exp+"\n<:credit:422009800256258058> `Credit Balance` "+bal+"\n\n`Fleet` N/A\n`Towns` "+townsPretty+"\n\n"+cleanOut,				
 							//timestamp: new Date(),
 							//footer: {
 							//	text: info_copyright
@@ -1793,7 +1793,7 @@ const commands = {
 							"thumbnail": {
 								"url": "https://minotar.net/body/"+player+"/200.png",
 							},
-							description: "`Player Name` "+player+"\n`Rank` N/A\n`Identification Number` N/A\n\n<:health:422012053092564992> `Current Health` NA\n<:xp:422013876847116289> `Current Level` N/A\n<:xp:422013876847116289> `XP to next Level` N/A\n<:xp:422013876847116289> `Current XP Level` N/A\n<:credit:422009800256258058> `Credit Balance` N/A\n<:op:422010121271508997> `System Operator Status` Disabled\n\n`Fleet` N/A\n`Towns` N/A",				
+							description: "`Player Name` "+player+"\n`Rank` N/A\n`Identification Number` N/A\n\n<:health:422012053092564992> `Current Health` NA\n<:xp:422013876847116289> `Current Level` N/A\n<:xp:422013876847116289> `XP to next Level` N/A\n<:xp:422013876847116289> `Current XP Level` N/A\n<:credit:422009800256258058> `Credit Balance` N/A\n\n`Fleet` N/A\n`Towns` N/A",				
 							//timestamp: new Date(),
 							//footer: {
 							//	text: info_copyright
@@ -1868,7 +1868,7 @@ const commands = {
 						"thumbnail": {
 							"url": "https://minotar.net/body/"+mcUser+"/200.png",
 						},
-					description: "`Player Name` "+mcUser+"\n`Rank` "+rank+"\n`Identification Number` "+uuidSecure+"\n\n<:health:422012053092564992> `Current Health` NA\n<:xp:422013876847116289> `Current Level` "+xp_exp_lvl+"\n<:xp:422013876847116289> `XP to next Level` "+xp_exp_to_level+"\n<:xp:422013876847116289> `Current XP Level` "+xp_total_exp+"\n<:credit:422009800256258058> `Credit Balance` "+bal+"\n<:op:422010121271508997> `System Operator Status` Disabled\n\n`Fleet` N/A\n`Towns` "+townsPretty,				
+					description: "`Player Name` "+mcUser+"\n`Rank` "+rank+"\n`Identification Number` "+uuidSecure+"\n\n<:health:422012053092564992> `Current Health` NA\n<:xp:422013876847116289> `Current Level` "+xp_exp_lvl+"\n<:xp:422013876847116289> `XP to next Level` "+xp_exp_to_level+"\n<:xp:422013876847116289> `Current XP Level` "+xp_total_exp+"\n<:credit:422009800256258058> `Credit Balance` "+bal+"\n\n`Fleet` N/A\n`Towns` "+townsPretty,				
 						//timestamp: new Date(),
 						//footer: {
 						//	text: info_copyright
@@ -1973,7 +1973,7 @@ const commands = {
 							"thumbnail": {
 								"url": "https://minotar.net/body/"+mcUser+"/200.png",
 							},
-						description: "`Player Name` "+mcUser+"\n`Identification Number` "+uuidSecure+"\n\n`Current Health` NA\n`Current XP Level` "+xp_exp_lvl+"\n`Credit Balance` "+bal+"\n`System Operator Status` Disabled\n`Rank` ["+rank+"]\n\n`Fleet` N/A\n`Towns` "+townsPretty,				
+						description: "`Player Name` "+mcUser+"\n`Identification Number` "+uuidSecure+"\n\n`Current Health` NA\n`Current XP Level` "+xp_exp_lvl+"\n`Credit Balance` "+bal+"\n`Rank` ["+rank+"]\n\n`Fleet` N/A\n`Towns` "+townsPretty,				
 							//timestamp: new Date(),
 							//footer: {
 							//	text: info_copyright
