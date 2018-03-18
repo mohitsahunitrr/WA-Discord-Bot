@@ -961,13 +961,8 @@ const commands = {
 		var mentionCommandAuthor = "<@"+msg.author.id+">";
 		var sys = require('util');
 		var exec = require('child_process').exec;
-<<<<<<< HEAD
-		var replaceThisColorGreen = "�		function puts(error, stdout, stderr) { 
-			msg.channel.send("<:main_computer:420575980198035456> <:terminalreal:421547027051184128>  `[Main Computer] Bot @ WA.Net#` "+mentionCommandAuthor+" `Pinging "+host+" with a few packets... please wait...`\n```ldif\n"+stdout.replace("replaceThisColorGreen", "").replace("replaceThisColorYellow", "").replace("replaceThisLineBreak", "")+"```"); 
-=======
 		function puts(error, stdout, stderr) { 
 			msg.channel.send("<:main_computer:420575980198035456> <:terminalreal:421547027051184128>  `[Main Computer] Bot @ WA.Net#` "+mentionCommandAuthor+" `Pinging "+host+" with a few packets... please wait...`\n```ldif\n"+stdout+"```"); 
->>>>>>> cce016ff1a052c54ced49e9efb4d7eec18aedc6c
 		}
 		if (systemOS === "win32") {
 			exec("ping -n 5 "+host, puts);
@@ -1089,13 +1084,8 @@ const commands = {
 		msg.channel.send("<:main_computer:420575980198035456> <:terminalreal:421547027051184128>  `[Main Computer] Bot @ WA.Net# Running speed test from bot host node... please wait...`");
 		var sys = require('util');
 		var exec = require('child_process').exec;
-<<<<<<< HEAD
-		var replaceThisColorGreen = "�		var replaceThisColorYellow = "�		function puts(error, stdout, stderr) { 
-			msg.channel.send("<:main_computer:420575980198035456> <:terminalreal:421547027051184128>  `[Main Computer] Bot @ WA.Net#` "+mentionCommandAuthor+" `Speed test result is complete, see attached.`\n```css\n"+stdout.replace("replaceThisColorGreen", "").replace("replaceThisColorYellow", "").replace("replaceThisLineBreak", "")+"```"); 
-=======
 		function puts(error, stdout, stderr) { 
 			msg.channel.send("<:main_computer:420575980198035456> <:terminalreal:421547027051184128>  `[Main Computer] Bot @ WA.Net#` "+mentionCommandAuthor+" `Speed test result is complete, see attached.`\n```css\n"+stdout+"```"); 
->>>>>>> cce016ff1a052c54ced49e9efb4d7eec18aedc6c
 		}
 		exec("speedtest-cli", puts);
 	},'update': (msg) => {
@@ -1126,13 +1116,8 @@ const commands = {
 		let host = msg.content.split(' ')[1];
 		var sys = require('util');
 		var exec = require('child_process').exec;
-<<<<<<< HEAD
-		var replaceThisColorGreen = "�		var replaceThisLineBreak = "		function puts(error, stdout, stderr) { 
-			msg.channel.send("<:main_computer:420575980198035456> <:terminalreal:421547027051184128>  `[Main Computer] Bot @ WA.Net#` "+mentionCommandAuthor+" `Pinging name server lookup on "+host+"...`\n```css\n"+stdout.replace("replaceThisColorGreen", "").replace("replaceThisColorYellow", "").replace("replaceThisLineBreak", "")+"```"); 
-=======
 		function puts(error, stdout, stderr) { 
 			msg.channel.send("<:main_computer:420575980198035456> <:terminalreal:421547027051184128>  `[Main Computer] Bot @ WA.Net#` "+mentionCommandAuthor+" `Pinging name server lookup on "+host+"...`\n```css\n"+stdout+"```"); 
->>>>>>> cce016ff1a052c54ced49e9efb4d7eec18aedc6c
 		}
 		exec("nslookup "+host, puts);
  },'dig': (msg) => {
@@ -1141,13 +1126,8 @@ const commands = {
 		let host = msg.content.split(' ')[1];
 		var sys = require('util');
 		var exec = require('child_process').exec;
-<<<<<<< HEAD
-		var replaceThisColorGreen = "�		var replaceThisColorYellow = "�		function puts(error, stdout, stderr) { 
-			msg.channel.send("<:main_computer:420575980198035456> <:terminalreal:421547027051184128>  `[Main Computer] Bot @ WA.Net#` "+mentionCommandAuthor+" `Digging network registry information for "+host+"...`\n```css\n"+stdout.replace("replaceThisColorGreen", "").replace("replaceThisColorYellow", "").replace("replaceThisLineBreak", "")+"```"); 
-=======
 		function puts(error, stdout, stderr) { 
 			msg.channel.send("<:main_computer:420575980198035456> <:terminalreal:421547027051184128>  `[Main Computer] Bot @ WA.Net#` "+mentionCommandAuthor+" `Digging network registry information for "+host+"...`\n```css\n"+stdout+"```"); 
->>>>>>> cce016ff1a052c54ced49e9efb4d7eec18aedc6c
 		}
 		exec("dig "+host, puts);
  },'gitdiff': (msg) => {
@@ -1460,13 +1440,8 @@ const commands = {
 		msg.channel.send("<:main_computer:420575980198035456> <:terminalreal:421547027051184128>  `[Main Computer] Bot @ WA.Net# Tracing "+host+" through origin network... please wait...`");
 		var sys = require('util');
 		var exec = require('child_process').exec;
-<<<<<<< HEAD
-		var replaceThisColorGreen = "�		function puts(error, stdout, stderr) { 
-			msg.channel.send("<:main_computer:420575980198035456> <:terminalreal:421547027051184128>  `[Main Computer] Bot @ WA.Net#` "+mentionCommandAuthor+" `Trace route result for "+host+" is complete, see attached.`\n```css\n"+stdout.replace("replaceThisColorGreen", "").replace("replaceThisColorYellow", "").replace("replaceThisLineBreak", "")+"```"); 
-=======
 		function puts(error, stdout, stderr) { 
 			msg.channel.send("<:main_computer:420575980198035456> <:terminalreal:421547027051184128>  `[Main Computer] Bot @ WA.Net#` "+mentionCommandAuthor+" `Trace route result for "+host+" is complete, see attached.`\n```css\n"+stdout+"```"); 
->>>>>>> cce016ff1a052c54ced49e9efb4d7eec18aedc6c
 		}
      exec("traceroute "+host, puts);
  },'open': (msg) => {
