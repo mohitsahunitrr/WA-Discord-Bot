@@ -1797,6 +1797,9 @@ const commands = {
 						}};
 						msg.channel.send(playerQueryIntro, playerEmbed);
 						return true;
+					} else {
+						msg.channel.send("<:main_computer:420575980198035456> <:barcode:420860838438502400>  `[Main Computer] Bot @ WA.Net# Not enough information for "+mcUser+" yet, give it some time...`");
+						return true;
 					}
 					var mcUser = rows[0].playerName;
 					var mcWorld = rows[0].world;
