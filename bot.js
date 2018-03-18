@@ -2169,10 +2169,12 @@ client.on('ready', () => {
 client.on('message', msg => {
 
 	//console.log("["+logTimestamp+"] "+msg.author.username+"("+msg.author.id+") "+msg);
-
+	if (!msg.content.startsWith(bot_prefix)) { 
+	} else {
 		if (commands.hasOwnProperty(msg.content.toLowerCase().slice(bot_prefix.length).split(' ')[0])) {
 			commands[msg.content.toLowerCase().slice(bot_prefix.length).split(' ')[0]](msg);
 		}
+	}
 	
 });
 
