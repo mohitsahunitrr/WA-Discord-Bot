@@ -1900,7 +1900,7 @@ const commands = {
 		} else { 
 
 
-			msg.channel.send("<:main_computer:420575980198035456> <:barcode:420860838438502400>  `[Main Computer] Bot @ WA.Net# Detected that "+player+" is a new user!`");
+			msg.channel.send("<:main_computer:420575980198035456> <:thumbprint:420873257370124290>  `[Main Computer] Bot @ WA.Net# Detected that "+player+" is a new user!`");
 
 		}
 	},'leave-minecraft': (msg) => {
