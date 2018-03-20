@@ -1898,92 +1898,10 @@ const commands = {
 			    }
 			}});				
 		} else { 
-			var conJoinMC = mysql.createConnection({
-					host: mysql_host,
-					user: mysql_user,
-					password: mysql_pass,
-					database: mysql_database
-			});
-			conJoinMC.connect(err => {
-				var now = moment();
-				var formattedNow = now.format('YYYY-MM-DD HH:mm:ss Z');
-				console.log("["+formattedNow+"]["+msg.author.username+"/"+msg.author.id+"] Queried "+player+"...\n");
-				conJoinMC.query("SELECT * FROM `player_experience`,`player_time`,`player_accounts` WHERE player_experience.player_name = '"+player+"' AND player_accounts.player_name = '"+player+"' AND player_time.playerName = '"+player+"';", function(err,rows) { 
-					if(err) { console.log("MySQL Error: "+err); } 
-					var mcUser = rows[0].playerName;
-					var mcWorld = rows[0].world;
-					var mcStatus = rows[0].mc_online_status;
-					var xp_exp = rows[0].exp;
-					var xp_exp_to_level = rows[0].exp_to_level;
-					var xp_total_exp = rows[0].total_exp;
-					var xp_exp_lvl = rows[0].exp_lvl;
-					var total_votes = rows[0].votes;
-					var bal = rows[0].money;
-					var uuid = rows[0].player_uuid;
-					var uuidSecure = uuid.substr(uuid.length - 6);
-					var rank = rows[0].parent;
-						function getTIMESTAMP(UNIX_timestamp) {
-							var a = new Date(parseInt(UNIX_timestamp));
-							if (UNIX_timestamp == 0) {
-								return "Never";
-							} else {
-								return a;
-							}
-						}
 
-						//start towns
-						conJoinMC.query("SELECT * FROM `player_accounts`,`ResidentsToTowns` WHERE player_accounts.player_uuid = ResidentsToTowns.resident AND player_accounts.player_name = '"+mcUser+"';", function(err,rows) { 
-						if(err) { console.log("MySQL Error: "+err); } 
-						if (!rows[0]) {
-							msg.channel.send({embed: {
-								color: 0xff8000,
-								author: {
-									name: bot_nickname+" - Town Info",
-									icon_url: bot_logo_square
-								},
-								description: "Player does not have any towns man! Homeless!",				
-								timestamp: new Date(),
-								footer: {
-									text: info_copyright
-								}
-							}});	
-							return true;
-						}
-						var towns = "";
-						rows.forEach(function(row) {
-							towns = towns + row['town']+" ("+row['rank']+"), ";
-						});
-						var townsPretty = towns.substring(0, towns.length - 2);
-						console.log(townsPretty);
-						
-						var last_seen = rows[0].last_seen;
-						var registered = rows[0].firstlogin;
-						var last_vote = rows[0].lastVote;
-						
-						var mcHealth = 0;
-						var mcWallet = 0;
-						var playTimePretty = rows[0].playtime;
-						var playerQueryIntro = "<:main_computer:420575980198035456> <:barcode:420860838438502400>  `[Main Computer] Bot @ WA.Net# Displaying credentials for "+mcUser+"...`";
-						var playerEmbed = {embed: {
-							color: 0xff8000,
-							author: {
-								name: "WA.Net - Identification Card",
-								icon_url: "https://minotar.net/avatar/"+mcUser+"/200.png"
-							},
-							"thumbnail": {
-								"url": "https://minotar.net/body/"+mcUser+"/200.png",
-							},
-						description: "`Player Name` "+mcUser+"\n`Identification Number` "+uuidSecure+"\n\n`Current Health` NA\n`Current XP Level` "+xp_exp_lvl+"\n`Credit Balance` "+bal+"\n`Rank` ["+rank+"]\n\n`Fleet` N/A\n`Towns` "+townsPretty,				
-							//timestamp: new Date(),
-							//footer: {
-							//	text: info_copyright
-							//}
-						}};
-						msg.channel.send(playerQueryIntro, playerEmbed);
-						conJoinMC.end();
-						})
-					})
-				})
+
+			msg.channel.send("<:main_computer:420575980198035456> <:barcode:420860838438502400>  `[Main Computer] Bot @ WA.Net# Detected that "+player+" is a new user!`");
+
 		}
 	},'leave-minecraft': (msg) => {
 		msg.delete(1000);
