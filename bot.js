@@ -1372,7 +1372,7 @@ const commands = {
 			msg.channel.send("<:main_computer:420575980198035456> :headphones: :mag_right: `[Main Computer] Radio @ WA.Net# Player "+msg.content.split(' ')[2]+" sent in game request for`"+searchRaw.substring(2)+" `...`");	
 			console.log(searchRaw);
 			var YouTube = require('youtube-node');
-			var mentionCommandAuthor = "@"+msg.content.split(' ')[2];
+			var mentionCommandAuthor = msg.content.split(' ')[2];
 			var youTube = new YouTube();
 			youTube.setKey(api_youtube_data);
 			var prettySearchTerm = searchRaw;
@@ -1421,7 +1421,7 @@ const commands = {
 								  } else {
 									exec("rm /storage/listen.m3u");
 									exec("find /storage/WA-Bot/music | grep .mp3 > /storage/listen.m3u");
-									msg.channel.send("<:main_computer:420575980198035456> :headphones: :white_check_mark:  `[Main Computer] Radio @ WA.Net# Added request from ` "+mentionCommandAuthor+" ` to Live Radio...` ```"+videoNamePretty+"\nDownloaded and encoded into MP3 (Audio)...\nAdded to WorldAutomation.Net Live Radio Queue...\nEnjoy!```Download it Here -> "+body.id+"\nListen Live in **#radio**, in Game or at -> https://www.worldautomation.net/listen.mp3");	
+									msg.channel.send("<:main_computer:420575980198035456> :headphones: :white_check_mark:  `[Main Computer] Radio @ WA.Net# Added request from in game player "+mentionCommandAuthor+" to Live Radio...` ```"+videoNamePretty+"\nDownloaded and encoded into MP3 (Audio)...\nAdded to WorldAutomation.Net Live Radio Queue...\nEnjoy!```Download it Here -> "+body.id+"\nListen Live in **#radio**, in Game or at -> https://www.worldautomation.net/listen.mp3");	
 									//console.log(response.statusCode, body)
 								  }
 								})
