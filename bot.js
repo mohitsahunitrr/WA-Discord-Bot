@@ -1356,6 +1356,106 @@ const commands = {
 			break;
 	}
 	
+ },'radio-backend': (msg) => {
+	let cmd = msg.content.split(' ')[1];
+	//msg.delete(1000);
+	switch(cmd) {
+		case "remove":
+			radioRemove("422898611106480139");		
+			break;
+		case "add":
+			let searchRaw = msg.content.replace(msg.content.split(' ')[0], "").replace(msg.content.split(' ')[1],"").replace(msg.content.split(' ')[2],"");
+			if(searchRaw == "" || !searchRaw) {
+				msg.channel.send("<:main_computer:420575980198035456> :headphones: :exclamation: `[Main Computer] Radio @ WA.Net# You need to supply a search term with !radio add [searchTerm]...`");	
+				return true;
+			}
+			msg.channel.send("<:main_computer:420575980198035456> :headphones: :mag_right: `[Main Computer] Radio @ WA.Net# Searching YouTube for `"+searchRaw+" `...`");	
+			console.log(searchRaw);
+			var YouTube = require('youtube-node');
+			var mentionCommandAuthor = msg.content.split(' ')[2];
+			var youTube = new YouTube();
+			youTube.setKey(api_youtube_data);
+			var prettySearchTerm = searchRaw;
+			var searchTerm = searchRaw.replace(/ /g, '+');
+			youTube.search(searchRaw, 1, function(error, result) {
+				if (error) {
+					console.log(error);
+				} else {
+					var result = result;
+					//console.log("Pre Parse Result: "+result['items']);
+					result['items'].forEach(function (video) {
+						var videoNamePretty = video.snippet.title;				
+						video.snippet.title = video.snippet.title.replace(/[^a-zA-Z0-9-_]/g, '_').replace("_-_", "-").replace("__-__","-");
+						var videoDownload = video.snippet.title;
+						var playerQueryIntro = "<:main_computer:420575980198035456> :headphones: :small_red_triangle_down:  `[Main Computer] Radio @ WA.Net# Starting download and encoding for "+videoNamePretty+"...`";
+						var playerEmbed = {embed: {
+							color: 0x000000,
+							title: videoNamePretty,					
+							"thumbnail": {
+								"url": video.snippet.thumbnails.default.url,
+							},
+							description: "\n https://www.youtube.com/watch?v="+video.id.videoId+"\n```dns\nYou will be notified (mentioned) when this download is complete and in the radio queue!```"
+						}};	
+
+						//download to mp3
+						var videoUrl = "https://www.youtube.com/watch?v="+video.id.videoId;   
+						var tempDir = "/storage/WA-Bot/assets/public/music/temp"; 
+						var musicDir = "/storage/WA-Bot/assets/public/music"; 
+
+						var videoReadableStream = ytdl(videoUrl, { filter: 'audioonly'});
+
+						ytdl.getInfo(videoUrl, function(err, info){
+							var videoName = info.title.replace('|','').replace(/[^a-zA-Z0-9-_]/g, '_').replace("_-_", "-").replace("__-__","-");
+							var videoWritableStream = fs.createWriteStream(tempDir + '/' + videoName + '.mp3'); 
+							var stream = videoReadableStream.pipe(videoWritableStream);
+
+							function completeMessage() {
+								//
+								request.post('https://www.googleapis.com/urlshortener/v1/url?key='+api_google_shortener, {
+								  json: {
+									'longUrl': 'https://radio.worldautomation.net/music/'+video.snippet.title+'.mp3'
+								  }
+								}, function (error, response, body) {
+								  if(error) {
+									console.log(error)
+								  } else {
+									exec("rm /storage/listen.m3u");
+									exec("find /storage/WA-Bot/music | grep .mp3 > /storage/listen.m3u");
+									msg.channel.send("<:main_computer:420575980198035456> :headphones: :white_check_mark:  `[Main Computer] Radio @ WA.Net# Added request from ` "+mentionCommandAuthor+" ` to Live Radio...` ```"+videoNamePretty+"\nDownloaded and encoded into MP3 (Audio)...\nAdded to WorldAutomation.Net Live Radio Queue...\nEnjoy!```Download it Here -> "+body.id+"\nListen Live in **#radio**, in Game or at -> https://www.worldautomation.net/listen.mp3");	
+									//console.log(response.statusCode, body)
+								  }
+								})
+								//
+							}
+							msg.channel.send(playerQueryIntro, playerEmbed);
+							var tempFile = tempDir + '/' + videoName + '.mp3';
+							var mp3Path = musicDir + '/' + videoName + '.mp3';
+							if (fs.existsSync(mp3Path)) {
+								completeMessage();
+							} else {
+								stream.on('finish', function() {
+								   //res.writeHead(204);
+								   //res.end();
+								   //move now that it is done...
+									ffmpeg(tempFile).audioCodec('libmp3lame').save(mp3Path).on('end', function() {
+										fs.unlinkSync(tempFile);
+										completeMessage();
+										//console.log('Done');
+									});					   
+									//move(tempDir + '/' + videoName + '.mp3', musicDir + '/' + videoName + '.mp3', completeMessage);
+								});    
+							}
+						});              
+						//end download
+
+					});
+				}
+			});	
+			break;
+		default:
+			break;
+	}
+	
  },'ytdl': (msg) => {
 	let searchRaw = msg.content.substr(msg.content.indexOf(' ')+1);
 	console.log(searchRaw);
