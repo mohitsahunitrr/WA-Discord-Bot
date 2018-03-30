@@ -1297,7 +1297,7 @@ const commands = {
 				msg.channel.send("<:main_computer:420575980198035456> :headphones: :exclamation: `[Main Computer] Radio @ WA.Net# You need to supply a search term with !radio add [searchTerm]...`");	
 				return true;
 			}
-			msg.channel.send("<:main_computer:420575980198035456> :headphones: :mag_right: `[Main Computer] Radio @ WA.Net# Searching YouTube for `"+searchRaw+" `...`");	
+			msg.channel.send("<:main_computer:420575980198035456> :headphones: :mag_right: `[Main Computer] Radio @ WA.Net# Searching YouTube for `"+searchRaw.substr(1)+" `...`");	
 			console.log(searchRaw);
 			var YouTube = require('youtube-node');
 			var mentionCommandAuthor = "<@"+msg.author.id+">";
