@@ -1236,11 +1236,12 @@ const commands = {
 			}).catch(err => console.log(err));
 			break;
 		case "add":
-			let searchRaw = msg.content.split(' ')[2];
+			let searchRaw = msg.content.replace(msg.content.split(' ')[2], "").replace(msg.content.split(' ')[1],"");
 			if(searchRaw == "" || !searchRaw) {
 				msg.channel.send("<:main_computer:420575980198035456> :headphones: :exclamation: `[Main Computer] Radio @ WA.Net# You need to supply a search term with !radio add [searchTerm]...`");	
 				return true;
 			}
+			msg.channel.send("<:main_computer:420575980198035456> :headphones: :mag_right: `[Main Computer] Radio @ WA.Net# Searching YouTube for `"+searchTerm+"`...`");	
 			console.log(searchRaw);
 			var YouTube = require('youtube-node');
 			var mentionCommandAuthor = "<@"+msg.author.id+">";
@@ -1516,8 +1517,9 @@ const commands = {
 		}
 	},'google': (msg) => {
 		var message = msg;
-		let searchTerm = msg.content.split(' ')[1];
+		let searchTerm = msg.content.replace(msg.content.split(' ')[0], "");
 		//msg.delete(1000);
+		msg.channel.send("Searching term '"+searchTerm+"'...");
 		googleCommand(msg,searchTerm);
 	},'movie': (msg) => {
 		var message = msg;
