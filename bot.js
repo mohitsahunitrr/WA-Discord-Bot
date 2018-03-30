@@ -1404,7 +1404,7 @@ const commands = {
 			var youTube = new YouTube();
 			youTube.setKey(api_youtube_data);
 			var prettySearchTerm = searchRaw;
-			var searchTerm = searchRaw.replace(/ /g, '+');
+			var searchTerm = (msg.content.split(' ')[3].replace(/ /g, '+');
 			youTube.search(searchTerm, 1, function(error, result) {
 				if (error) {
 					console.log(error);
