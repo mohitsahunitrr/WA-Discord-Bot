@@ -1272,6 +1272,16 @@ const commands = {
 			let testRaw = msg.content.split(' ')[2];
 			msg.channel.send('Search String: '+testRaw);
 			break;
+		case "wipe":
+			exec("rm -rf /storage/WA-Bot/assets/public/music/*.mp3");
+			exec("cp -rf /storage/WA-Bot/assets/public/music-orig/*.mp3 /storage/WA-Bot/assets/public/music/.");
+			exec("mv /storage/listen.m3u.orig /storage/listen.m3u");
+ 			msg.channel.send("<:main_computer:420575980198035456> :headphones: :fast_forward:  `[Main Computer] Radio @ WA.Net# Wiping radio queue...`");					
+			setTimeout(function () {
+				radioNowPlaying("422898611106480139");
+			}, 10000);			
+			
+			break;			
 		case "play":
 			//msg.delete(1000);
 			const streamOptions = { seek: 0, volume: 1 };
