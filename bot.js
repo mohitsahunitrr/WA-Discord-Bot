@@ -438,7 +438,29 @@ function radioQueue(channel){
 		});
 	});
 }
+function radioRemove(channel){
+	http.get("http://radio.worldautomation.net/status-json.xsl", function(res){
+		var data = '';
 
+		res.on('data', function (chunk){
+			data += chunk;
+		});
+
+		res.on('end',function(){
+			var obj = JSON.parse(data);
+			var title = obj.icestats.source.title + ".mp3";
+
+			var sys = require('util');
+			var exec = require('child_process').exec;
+			function puts(error, stdout, stderr) { 
+				client.channels.get(channel).send("<:main_computer:420575980198035456> :headphones: :x:  `[Main Computer] Radio @ WA.Net# Removed `"+songName+" from the radio queue`!``");
+				return true;
+			}
+			exec("rm -rf /storage/WA-Bot/assets/public/music/"+title, puts);
+			
+		});
+	});
+}
 
 //timeout
 var timed_out = false,
@@ -1241,7 +1263,7 @@ const commands = {
 				msg.channel.send("<:main_computer:420575980198035456> :headphones: :exclamation: `[Main Computer] Radio @ WA.Net# You need to supply a search term with !radio add [searchTerm]...`");	
 				return true;
 			}
-			msg.channel.send("<:main_computer:420575980198035456> :headphones: :mag_right: `[Main Computer] Radio @ WA.Net# Searching YouTube for `"+searchRaw+"`...`");	
+			msg.channel.send("<:main_computer:420575980198035456> :headphones: :mag_right: `[Main Computer] Radio @ WA.Net# Searching YouTube for `"+searchRaw+" `...`");	
 			console.log(searchRaw);
 			var YouTube = require('youtube-node');
 			var mentionCommandAuthor = "<@"+msg.author.id+">";
