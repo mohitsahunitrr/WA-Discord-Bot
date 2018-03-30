@@ -1236,7 +1236,7 @@ const commands = {
 			}).catch(err => console.log(err));
 			break;
 		case "add":
-			let searchRaw = msg.content.replace(msg.content.split(' ')[2], "").replace(msg.content.split(' ')[1],"");
+			let searchRaw = msg.content.replace(msg.content.split(' ')[0], "").replace(msg.content.split(' ')[1],"");
 			if(searchRaw == "" || !searchRaw) {
 				msg.channel.send("<:main_computer:420575980198035456> :headphones: :exclamation: `[Main Computer] Radio @ WA.Net# You need to supply a search term with !radio add [searchTerm]...`");	
 				return true;
