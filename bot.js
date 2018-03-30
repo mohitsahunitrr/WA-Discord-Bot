@@ -453,7 +453,7 @@ function radioRemove(channel){
 			var sys = require('util');
 			var exec = require('child_process').exec;
 			function puts(error, stdout, stderr) { 
-				client.channels.get(channel).send("<:main_computer:420575980198035456> :headphones: :x:  `[Main Computer] Radio @ WA.Net# Removed `"+songName+" from the radio queue`!``");
+				client.channels.get(channel).send("<:main_computer:420575980198035456> :headphones: :wastebasket:  `[Main Computer] Radio @ WA.Net# Removed `"+songName+" from the radio queue`!``");
 				return true;
 			}
 			exec("rm -rf /storage/WA-Bot/assets/public/music/"+title, puts);
@@ -1225,7 +1225,7 @@ const commands = {
 			
 			break;
 		case "remove":
-			msg.channel.send("<:main_computer:420575980198035456> :headphones: :wastebasket:  `[Main Computer] Radio @ WA.Net# Not yet implemented!`");
+			radioRemove("422898611106480139");		
 			break;
 		case "nowplaying":
 			radioNowPlaying("422898611106480139");
