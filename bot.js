@@ -1547,7 +1547,6 @@ const commands = {
 		var message = msg;
 		let searchTerm = msg.content.replace(msg.content.split(' ')[0], "");
 		//msg.delete(1000);
-		msg.channel.send("Searching term '"+searchTerm+"'...");
 		googleCommand(msg,searchTerm);
 	},'movie': (msg) => {
 		var message = msg;
