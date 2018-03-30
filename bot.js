@@ -1398,19 +1398,20 @@ const commands = {
 				return true;
 			}
 			msg.channel.send("<:main_computer:420575980198035456> :headphones: :mag_right: `[Main Computer] Radio @ WA.Net# Player "+msg.content.split(' ')[2]+" sent in game request for`"+searchRaw.substring(2)+" `...`");	
-			console.log(searchRaw);
 			var YouTube = require('youtube-node');
 			var mentionCommandAuthor = msg.content.split(' ')[2];
 			var youTube = new YouTube();
 			youTube.setKey(api_youtube_data);
 			var prettySearchTerm = searchRaw;
 			var searchTerm = msg.content.replace(msg.content.split(' ')[0], "").replace(msg.content.split(' ')[1],"").replace(msg.content.split(' ')[2],"").replace(/ /g, '+');
+			console.log(searchTerm);
+
 			youTube.search(searchTerm, 1, function(error, result) {
 				if (error) {
 					console.log(error);
 				} else {
 					var result = result;
-					//console.log("Pre Parse Result: "+result['items']);
+					console.log("Pre Parse Result: "+result['items']);
 					result['items'].forEach(function (video) {
 						var videoNamePretty = video.snippet.title;				
 						video.snippet.title = video.snippet.title.replace(/[^a-zA-Z0-9-_]/g, '_').replace("_-_", "-").replace("__-__","-");
