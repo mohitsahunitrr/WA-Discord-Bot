@@ -1403,15 +1403,15 @@ const commands = {
 			var youTube = new YouTube();
 			youTube.setKey(api_youtube_data);
 			var prettySearchTerm = searchRaw;
-			var searchTerm = msg.content.replace(msg.content.split(' ')[0], "").replace(msg.content.split(' ')[1],"").replace(msg.content.split(' ')[2],"").replace(/ /g, '+');
-			console.log(searchTerm);
+			var searchTerm = msg.content.replace(msg.content.split(' ')[0], "").replace(msg.content.split(' ')[1],"").replace(msg.content.split(' ')[2],"").substr(3).replace(/ /g, '+');
+			console.log("Searching for: '"+searchTerm+"'");
 
 			youTube.search(searchTerm, 1, function(error, result) {
 				if (error) {
 					console.log(error);
 				} else {
 					var result = result;
-					console.log("Pre Parse Result: "+result['items']);
+					//console.log("Pre Parse Result: "+result['items']);
 					result['items'].forEach(function (video) {
 						var videoNamePretty = video.snippet.title;				
 						video.snippet.title = video.snippet.title.replace(/[^a-zA-Z0-9-_]/g, '_').replace("_-_", "-").replace("__-__","-");
