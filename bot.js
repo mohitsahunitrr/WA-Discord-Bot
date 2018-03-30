@@ -1372,7 +1372,7 @@ const commands = {
 			msg.channel.send("<:main_computer:420575980198035456> :headphones: :mag_right: `[Main Computer] Radio @ WA.Net# Player "+msg.content.split(' ')[2]+" sent in game request for`"+searchRaw.substring(2)+" `...`");	
 			console.log(searchRaw);
 			var YouTube = require('youtube-node');
-			var mentionCommandAuthor = "<@"+msg.content.split(' ')[2]+">";
+			var mentionCommandAuthor = "@"+msg.content.split(' ')[2];
 			var youTube = new YouTube();
 			youTube.setKey(api_youtube_data);
 			var prettySearchTerm = searchRaw;
