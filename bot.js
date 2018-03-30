@@ -1386,7 +1386,7 @@ const commands = {
 	
  },'radio-backend': (msg) => {
 	let cmd = msg.content.split(' ')[1];
-	//msg.delete(1000);
+	msg.delete(1000);
 	switch(cmd) {
 		case "remove":
 			radioRemoveBackend("422898611106480139",msg.content.split(' ')[2]);		
