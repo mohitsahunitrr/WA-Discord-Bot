@@ -1287,7 +1287,7 @@ const commands = {
 						var videoNamePretty = video.snippet.title;				
 						video.snippet.title = video.snippet.title.replace(/[^a-zA-Z0-9-_]/g, '_').replace("_-_", "-").replace("__-__","-");
 						var videoDownload = video.snippet.title;
-						var playerQueryIntro = "<:main_computer:420575980198035456> :headphones: :small_red_triangle_down:  `[Main Computer] Radio @ WA.Net# Starting download and encoding for "+videoNamePretty+"...`";
+						var playerQueryIntro = "<:main_computer:420575980198035456> :headphones: :small_red_triangle_down: `[Main Computer] Radio @ WA.Net# Starting download and encoding for "+videoNamePretty+"...`";
 						var playerEmbed = {embed: {
 							color: 0x000000,
 							title: videoNamePretty,					
@@ -1387,7 +1387,7 @@ const commands = {
 						var videoNamePretty = video.snippet.title;				
 						video.snippet.title = video.snippet.title.replace(/[^a-zA-Z0-9-_]/g, '_').replace("_-_", "-").replace("__-__","-");
 						var videoDownload = video.snippet.title;
-						var playerQueryIntro = "<:main_computer:420575980198035456> :headphones: :small_red_triangle_down:  `[Main Computer] Radio @ WA.Net# Starting download and encoding for "+videoNamePretty+"...`";
+						var playerQueryIntro = "<:main_computer:420575980198035456> :headphones: :small_red_triangle_down: `[Main Computer] Radio @ WA.Net# Starting download and encoding for "+videoNamePretty+"...`";
 						var playerEmbed = {embed: {
 							color: 0x000000,
 							title: videoNamePretty,					
