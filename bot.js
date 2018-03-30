@@ -1276,9 +1276,10 @@ const commands = {
 			exec("rm -rf /storage/WA-Bot/assets/public/music/*.mp3");
 			exec("cp -rf /storage/WA-Bot/assets/public/music-orig/*.mp3 /storage/WA-Bot/assets/public/music/.");
 			exec("mv /storage/listen.m3u.orig /storage/listen.m3u");
- 			msg.channel.send("<:main_computer:420575980198035456> :headphones: :fast_forward:  `[Main Computer] Radio @ WA.Net# Wiping radio queue...`");					
+ 			msg.channel.send("<:main_computer:420575980198035456> :headphones: :fast_forward:  `[Main Computer] Radio @ WA.Net# Wiping radio queue...`");
+			exec("pkill -10 ices && pkill -1 ices");			
 			setTimeout(function () {
-				radioNowPlaying("422898611106480139");
+				radioQueue("422898611106480139");
 			}, 10000);			
 			
 			break;			
