@@ -467,7 +467,35 @@ function radioRemove(channel){
 		});
 	});
 }
+function radioRemoveBackend(channel,player){
+	console.log("Starting radio remove...");
+	http.get("http://radio.worldautomation.net/status-json.xsl", function(res){
+		var data = '';
 
+		res.on('data', function (chunk){
+			data += chunk;
+		});
+
+		res.on('end',function(){
+			var obj = JSON.parse(data);
+			var title = obj.icestats.source.title + ".mp3";
+			var titlePretty = obj.icestats.source.title.replace(/\/storage\/WA-Bot\/assets\/public\/music\//g, "").replace(/__/g, " ").replace(/_/g, " ");
+
+			var sys = require('util');
+			var exec = require('child_process').exec;
+			function puts(error, stdout, stderr) { 
+				client.channels.get(channel).send("<:main_computer:420575980198035456> :headphones: :wastebasket:  `[Main Computer] Radio @ WA.Net# Player "+player+" removed  ` "+titlePretty+" `from the radio queue`!");
+				return true;
+			}
+			exec("rm -rf /storage/WA-Bot/assets/public/music/"+title, puts);
+			exec("pkill -10 ices && pkill -1 ices");
+	
+			setTimeout(function () {
+				radioNowPlaying("422898611106480139");
+			}, 10000);				
+		});
+	});
+}
 //timeout
 var timed_out = false,
     timer     = setTimeout(function() {
@@ -1361,7 +1389,7 @@ const commands = {
 	msg.delete(1000);
 	switch(cmd) {
 		case "remove":
-			radioRemove("422898611106480139");		
+			radioRemoveBackend("422898611106480139",msg.content.split(' ')[2]);		
 			break;
 		case "add":
 			let searchRaw = msg.content.replace(msg.content.split(' ')[0], "").replace(msg.content.split(' ')[1],"").replace(msg.content.split(' ')[2],"");
