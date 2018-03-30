@@ -1278,7 +1278,7 @@ const commands = {
 			exec("mv /storage/listen.m3u.orig /storage/listen.m3u");
  			msg.channel.send("<:main_computer:420575980198035456> :headphones: :wastebasket:  `[Main Computer] Radio @ WA.Net# Wiping radio queue...`");
 			radioQueue("422898611106480139");
- 			msg.channel.send("<:main_computer:420575980198035456> :headphones: ::white_check_mark:  `[Main Computer] Radio @ WA.Net# Radio queue wipe completed!`");
+ 			msg.channel.send("<:main_computer:420575980198035456> :headphones: :white_check_mark:  `[Main Computer] Radio @ WA.Net# Radio queue wipe completed!`");
 			exec("pkill -10 ices && pkill -1 ices");			
 			break;			
 		case "play":
