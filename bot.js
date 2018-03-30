@@ -455,7 +455,7 @@ function radioRemove(channel){
 			var sys = require('util');
 			var exec = require('child_process').exec;
 			function puts(error, stdout, stderr) { 
-				client.channels.get(channel).send("<:main_computer:420575980198035456> :headphones: :wastebasket:  `[Main Computer] Radio @ WA.Net# Removed  `"+titlePretty+"` from the radio queue`!");
+				client.channels.get(channel).send("<:main_computer:420575980198035456> :headphones: :wastebasket:  `[Main Computer] Radio @ WA.Net# Removed  ` "+titlePretty+" ` from the radio queue`!");
 				return true;
 			}
 			exec("rm -rf /storage/WA-Bot/assets/public/music/"+title, puts);
