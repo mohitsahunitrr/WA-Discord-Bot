@@ -485,7 +485,7 @@ function radioRemoveBackend(channel,player){
 			var exec = require('child_process').exec;
 			function puts(error, stdout, stderr) { 
 				client.channels.get(channel).send("<:main_computer:420575980198035456> :headphones: :wastebasket:  `[Live Radio] WA.Net# Player "+player+" removed  ` "+titlePretty+" `from the radio queue`!");
-				client.channels.get("419425539884056587").send("<:main_computer:420575980198035456> :headphones: :wastebasket:  `[Live Radio] WA.Net# Player "+player+" removed  ` "+titlePretty+" `from the radio queue`!");
+				//client.channels.get("419425539884056587").send("<:main_computer:420575980198035456> :headphones: :wastebasket:  `[Live Radio] WA.Net# Player "+player+" removed  ` "+titlePretty+" `from the radio queue`!");
 				return true;
 			}
 			exec("rm -rf /storage/WA-Bot/assets/public/music/"+title, puts);
@@ -1409,7 +1409,7 @@ const commands = {
 				return true;
 			}
 			msg.channel.send("<:main_computer:420575980198035456> :headphones: :mag_right: `[Live Radio] WA.Net# Player "+msg.content.split(' ')[2]+" sent in game request for`"+searchRaw.substring(2)+" `...`");	
-			client.channels.get("419425539884056587").send("<:main_computer:420575980198035456> :headphones: :mag_right: `[Live Radio] WA.Net# Player "+msg.content.split(' ')[2]+" sent in game request for`"+searchRaw.substring(2)+" `...`");	
+			//client.channels.get("419425539884056587").send("<:main_computer:420575980198035456> :headphones: :mag_right: `[Live Radio] WA.Net# Player "+msg.content.split(' ')[2]+" sent in game request for`"+searchRaw.substring(2)+" `...`");	
 			var YouTube = require('youtube-node');
 			var mentionCommandAuthor = msg.content.split(' ')[2];
 			var youTube = new YouTube();
