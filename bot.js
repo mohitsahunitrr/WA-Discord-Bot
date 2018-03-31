@@ -100,7 +100,7 @@ async function googleCommand(msg, args) {
 
 // These are our two variables. One of them creates a message while we preform a search,
 // the other generates a URL for our crawler.
-let searchMessage = await msg.reply("<:main_computer:420575980198035456> <:wa:324446350211284992>  `[Main Computer] Bot @ WA.Net# Querying the matrix for answers...`");
+let searchMessage = await msg.reply("<:main_computer:420575980198035456> <:wa:324446350211284992>  `[Main Computer] WA.Net# Querying the matrix for answers...`");
 let searchUrl = `https://www.google.com/search?q=${encodeURIComponent(msg.content)}`;
 
 // We will now use snekfetch to crawl Google.com. Snekfetch uses promises so we will
@@ -116,11 +116,11 @@ return snekfetch.get(searchUrl).then((result) => {
 		// Now that we have our data from Google, we can send it to the channel.
 		googleData = querystring.parse(googleData.replace('/url?', ''));
 		//searchMessage.edit(`Result found!\n${googleData.q}`);
-		searchMessage.edit("<:main_computer:420575980198035456> <:wa:324446350211284992>  `[Main Computer] Bot @ WA.Net# Answer found, see attached.`\n "+googleData.q);
+		searchMessage.edit("<:main_computer:420575980198035456> <:wa:324446350211284992>  `[Main Computer] WA.Net# Answer found, see attached.`\n "+googleData.q);
 		
 // If no results are found, we catch it and return 'No results are found!'
 	}).catch((err) => {
-		searchMessage.edit("<:main_computer:420575980198035456> <:wa:324446350211284992>  `[Main Computer] Bot @ WA.Net# No results found!`");
+		searchMessage.edit("<:main_computer:420575980198035456> <:wa:324446350211284992>  `[Main Computer] WA.Net# No results found!`");
 	});
 }
 //movies
@@ -128,7 +128,7 @@ async function movieCommand(msg, args) {
 
 // These are our two variables. One of them creates a message while we preform a search,
 // the other generates a URL for our crawler.
-let searchMessage = await msg.reply("<:main_computer:420575980198035456> <:wa:324446350211284992>  `[Main Computer] Bot @ WA.Net# Querying the matrix for answers...`");
+let searchMessage = await msg.reply("<:main_computer:420575980198035456> <:wa:324446350211284992>  `[Main Computer] WA.Net# Querying the matrix for answers...`");
 let searchUrl = `https://www.google.com/search?q=${encodeURIComponent(msg.content)}`;
 
 // We will now use snekfetch to crawl Google.com. Snekfetch uses promises so we will
@@ -144,11 +144,11 @@ return snekfetch.get(searchUrl).then((result) => {
 		// Now that we have our data from Google, we can send it to the channel.
 		googleData = querystring.parse(googleData.replace('/url?', ''));
 		//searchMessage.edit(`Result found!\n${googleData.q}`);
-		searchMessage.edit("<:main_computer:420575980198035456> <:wa:324446350211284992>  `[Main Computer] Bot @ WA.Net# Answer found, see attached.`\nhttps://www.worldautomation.net/files/everlast.mp4");
+		searchMessage.edit("<:main_computer:420575980198035456> <:wa:324446350211284992>  `[Main Computer] WA.Net# Answer found, see attached.`\nhttps://www.worldautomation.net/files/everlast.mp4");
 		
 // If no results are found, we catch it and return 'No results are found!'
 	}).catch((err) => {
-		searchMessage.edit("<:main_computer:420575980198035456> <:wa:324446350211284992>  `[Main Computer] Bot @ WA.Net# No results found!`");
+		searchMessage.edit("<:main_computer:420575980198035456> <:wa:324446350211284992>  `[Main Computer] WA.Net# No results found!`");
 	});
 }
 //Some Logging Stuff
@@ -405,7 +405,7 @@ function radioNowPlaying(channel){
 
 		res.on('end',function(){
 			var obj = JSON.parse(data);
-		client.channels.get(channel).send("<:main_computer:420575980198035456> :headphones: :arrow_forward:  `[Main Computer] Radio @ WA.Net# Displaying current track and stream information...`\n```css\nCurrent Track { "+obj.icestats.source.title.replace(/_/g, ' ').replace(/-/g,' ')+" }\nNext Track { Not Yet Implemented }\nPrevious Track { Not Yet Implemented }\nPeak Listeners { "+obj.icestats.source.listener_peak+" }\nCurrent Listeners { "+obj.icestats.source.listeners+" }\nCurrent Bit Rate { "+obj.icestats.source.bitrate+" }```");
+		client.channels.get(channel).send("<:main_computer:420575980198035456> :headphones: :arrow_forward:  `[Live Radio] WA.Net# Displaying current track and stream information...`\n```css\nCurrent Track { "+obj.icestats.source.title.replace(/_/g, ' ').replace(/-/g,' ')+" }\nNext Track { Not Yet Implemented }\nPrevious Track { Not Yet Implemented }\nPeak Listeners { "+obj.icestats.source.listener_peak+" }\nCurrent Listeners { "+obj.icestats.source.listeners+" }\nCurrent Bit Rate { "+obj.icestats.source.bitrate+" }```");
 		});
 	});
 }
@@ -430,7 +430,7 @@ function radioQueue(channel){
 				var playList = stdout.replace(/.mp3/g, "").replace(/\/storage\/WA-Bot\/assets\/public\/music\//g, "").replace(/__/g, " ").replace(/_/g, " ");
 				var finalPlayList = playList.replace(title,"{ "+title.replace(/_/g, '')+" }");
 				//console.log(finalPlayList);
-				client.channels.get(channel).send("<:main_computer:420575980198035456> :headphones: :arrow_forward:  `[Main Computer] Radio @ WA.Net# Displaying current radio queue...`\n```css\n"+finalPlayList+"```");
+				client.channels.get(channel).send("<:main_computer:420575980198035456> :headphones: :arrow_forward:  `[Live Radio] WA.Net# Displaying current radio queue...`\n```css\n"+finalPlayList+"```");
 				return true;
 			}
 			exec("cat /storage/listen.m3u", puts);
@@ -455,7 +455,7 @@ function radioRemove(channel){
 			var sys = require('util');
 			var exec = require('child_process').exec;
 			function puts(error, stdout, stderr) { 
-				client.channels.get(channel).send("<:main_computer:420575980198035456> :headphones: :wastebasket:  `[Main Computer] Radio @ WA.Net# Removed  ` "+titlePretty+" `from the radio queue`!");
+				client.channels.get(channel).send("<:main_computer:420575980198035456> :headphones: :wastebasket:  `[Live Radio] WA.Net# Removed  ` "+titlePretty+" `from the radio queue`!");
 				return true;
 			}
 			exec("rm -rf /storage/WA-Bot/assets/public/music/"+title, puts);
@@ -484,8 +484,8 @@ function radioRemoveBackend(channel,player){
 			var sys = require('util');
 			var exec = require('child_process').exec;
 			function puts(error, stdout, stderr) { 
-				client.channels.get(channel).send("<:main_computer:420575980198035456> :headphones: :wastebasket:  `[Main Computer] Radio @ WA.Net# Player "+player+" removed  ` "+titlePretty+" `from the radio queue`!");
-				client.channels.get("419425539884056587").send("<:main_computer:420575980198035456> :headphones: :wastebasket:  `[Main Computer] Radio @ WA.Net# Player "+player+" removed  ` "+titlePretty+" `from the radio queue`!");
+				client.channels.get(channel).send("<:main_computer:420575980198035456> :headphones: :wastebasket:  `[Live Radio] WA.Net# Player "+player+" removed  ` "+titlePretty+" `from the radio queue`!");
+				client.channels.get("419425539884056587").send("<:main_computer:420575980198035456> :headphones: :wastebasket:  `[Live Radio] WA.Net# Player "+player+" removed  ` "+titlePretty+" `from the radio queue`!");
 				return true;
 			}
 			exec("rm -rf /storage/WA-Bot/assets/public/music/"+title, puts);
@@ -531,7 +531,7 @@ var readyLog = function(msg,d,u,uid) {
 		var gitHash = data.toString().substr(null,8);
 		console.log("Repository Hash: "+gitHash);
 		console.log("---------------------------\n");
-		client.channels.get(discord_channel_id_log).send("<:main_computer:420575980198035456> <:terminalreal:421547027051184128>  `[Main Computer] Bot @ WA.Net# Systems initialized, starting node daemon...`\n```css\nBot Started Successfully!\n\nBot PID { "+process.pid+" }\n\nRepository Version Hash { "+gitHash+" }```");
+		client.channels.get(discord_channel_id_log).send("<:main_computer:420575980198035456> <:terminalreal:421547027051184128>  `[Main Computer] WA.Net# Systems initialized, starting node daemon...`\n```css\nBot Started Successfully!\n\nBot PID { "+process.pid+" }\n\nRepository Version Hash { "+gitHash+" }```");
 	});
 };
 
@@ -660,11 +660,11 @@ const commands = {
 		var amount = parseInt(amount1)+1;
 		var amountInt = parseInt(amount)+0;
 		if (!amount) { 
-			message.channel.send("<:main_computer:420575980198035456> :wastebasket: :exclamation: `[Main Computer] Bot @ WA.Net# You must specify an amount of messages!`");
+			message.channel.send("<:main_computer:420575980198035456> :wastebasket: :exclamation: `[Main Computer] WA.Net# You must specify an amount of messages!`");
 		} else if (parseInt(amount1) > 50) {
-			message.channel.send("<:main_computer:420575980198035456> :wastebasket: :exclamation: `[Main Computer] Bot @ WA.Net# You must specify an amount under 50!`");
+			message.channel.send("<:main_computer:420575980198035456> :wastebasket: :exclamation: `[Main Computer] WA.Net# You must specify an amount under 50!`");
 		} else {
-			message.channel.bulkDelete(amount).then(message.channel.send("<:main_computer:420575980198035456> :wastebasket:  `[Main Computer] Bot @ WA.Net# Purged "+amount1+" message(s) from channel <#"+msg.channel.id+">!` ```css\nMessages Purged { "+amount1+" }\nChannel Purged { #"+msg.channel.name+" }\nUser { "+msg.author.username+"/"+msg.author.id+" }\n\nThis message will self destruct in 5 seconds...```").then(msg => msg.delete(5000)).catch(err => console.log(err)));
+			message.channel.bulkDelete(amount).then(message.channel.send("<:main_computer:420575980198035456> :wastebasket:  `[Main Computer] WA.Net# Purged "+amount1+" message(s) from channel <#"+msg.channel.id+">!` ```css\nMessages Purged { "+amount1+" }\nChannel Purged { #"+msg.channel.name+" }\nUser { "+msg.author.username+"/"+msg.author.id+" }\n\nThis message will self destruct in 5 seconds...```").then(msg => msg.delete(5000)).catch(err => console.log(err)));
 		}
 	},'brag': (msg) => {
 		//msg.delete(1000);
@@ -720,7 +720,7 @@ const commands = {
 			    }
 			  }
 			}); */
-			msg.channel.send("<:main_computer:420575980198035456> <:wa:324446350211284992>  `[Main Computer] Bot @ WA.Net# Querying the answer to life, the universe, and everything...` ```css\n42 :)\n\nCustom Open Source Discord Bot built with [Node] and [Discord.js] for our Minecraft community and server.\n\nFor more information including current and planned features visit the link above.\n\nBig Brother is Watching You!\n\n{ www.worldautomation.net | All Rights Reserved }```");
+			msg.channel.send("<:main_computer:420575980198035456> <:wa:324446350211284992>  `[Main Computer] WA.Net# Querying the answer to life, the universe, and everything...` ```css\n42 :)\n\nCustom Open Source Discord Bot built with [Node] and [Discord.js] for our Minecraft community and server.\n\nFor more information including current and planned features visit the link above.\n\nBig Brother is Watching You!\n\n{ www.worldautomation.net | All Rights Reserved }```");
 	},'auth-login': (msg) => {
 		let player = msg.content.split(' ')[1];
 		msg.delete(1000);
@@ -747,7 +747,7 @@ const commands = {
 			    }
 			  }
 			}); */
-			msg.channel.send("<:main_computer:420575980198035456> <:barcode:420860838438502400>  `[Main Computer] Bot @ WA.Net# Verified biometric and secure authentication bit for "+player+" successfully!`");
+			msg.channel.send("<:main_computer:420575980198035456> <:barcode:420860838438502400>  `[Main Computer] WA.Net# Verified biometric and secure authentication bit for "+player+" successfully!`");
 	},'auth-login-fail': (msg) => {
 		let player = msg.content.split(' ')[1];
 		msg.delete(1000);
@@ -774,7 +774,7 @@ const commands = {
 			    }
 			  }
 			}); */
-			msg.channel.send("<:main_computer:420575980198035456> :spy:  `[Main Computer] Bot @ WA.Net# Unable to verify "+player+"'s secure biometric authentication bit... impostor?`");
+			msg.channel.send("<:main_computer:420575980198035456> :spy:  `[Main Computer] WA.Net# Unable to verify "+player+"'s secure biometric authentication bit... impostor?`");
 	},'auth-register': (msg) => {
 		let player = msg.content.split(' ')[1];
 		msg.delete(1000);
@@ -801,7 +801,7 @@ const commands = {
 			    }
 			  }
 			}); */
-			msg.channel.send("<:main_computer:420575980198035456> <:thumbprint:420873257370124290>  `[Main Computer] Bot @ WA.Net# Created a new authentication bit for "+player+" successfully, updating protocols and assigning system access...` ```css\nSystem Username: { username }\nSystem Password: { ********** }\nUser Home: { /home/username }\nSecure Shell Access: { ssh.worldautomation.net }\n\nSystem user provisioned successfully in matrix!\n\nMay the odds ever be in your favor!```");
+			msg.channel.send("<:main_computer:420575980198035456> <:thumbprint:420873257370124290>  `[Main Computer] WA.Net# Created a new authentication bit for "+player+" successfully, updating protocols and assigning system access...` ```css\nSystem Username: { username }\nSystem Password: { ********** }\nUser Home: { /home/username }\nSecure Shell Access: { ssh.worldautomation.net }\n\nSystem user provisioned successfully in matrix!\n\nMay the odds ever be in your favor!```");
 	},'clear': (msg) => {
 		msg.delete(1000);
 		var authToken = bot_token;
@@ -834,7 +834,7 @@ const commands = {
 			})
 		}
 		deleteLoop()		
-		msg.channel.send("<:main_computer:420575980198035456> <:wa:324446350211284992>  `[Main Computer] Bot @ WA.Net# Wiping all channel hard drives and cache buffers for channel...`");
+		msg.channel.send("<:main_computer:420575980198035456> <:wa:324446350211284992>  `[Main Computer] WA.Net# Wiping all channel hard drives and cache buffers for channel...`");
 	},'announcement': (msg) => {
 		let announcement = msg.content.split(/\s(.+)/)[1];
 		msg.delete(1000);
@@ -862,7 +862,7 @@ const commands = {
 			    }
 			  }
 			}); */
-			msg.channel.send("<:main_computer:420575980198035456> <:wa:324446350211284992> :loudspeaker:  `[Main Computer] Bot @ WA.Net# Announcement for all players. See attached.`\n"+announcement).then(function (message) {
+			msg.channel.send("<:main_computer:420575980198035456> <:wa:324446350211284992> :loudspeaker:  `[Main Computer] WA.Net# Announcement for all players. See attached.`\n"+announcement).then(function (message) {
               this.addReaction("👍", msg.author)
               this.addReaction("👍", msg.author)
               //message.pin()
@@ -897,7 +897,7 @@ const commands = {
 			    }
 			  }
 			}); */
-			msg.channel.send("<:main_computer:420575980198035456> <:wa:324446350211284992> <:cone:421166940531326977>  `[Main Computer] Bot @ WA.Net# Performing maintenance on internal systems, expected ETA is "+maintenance+"!`");
+			msg.channel.send("<:main_computer:420575980198035456> <:wa:324446350211284992> <:cone:421166940531326977>  `[Main Computer] WA.Net# Performing maintenance on internal systems, expected ETA is "+maintenance+"!`");
 		}
 	},'rules': (msg) => {
 		msg.delete(1000);
@@ -924,7 +924,7 @@ const commands = {
 			    }
 			  }
 			}); */
-			msg.channel.send("<:main_computer:420575980198035456> <:wa:324446350211284992>  `[Main Computer] Bot @ WA.Net# Initializing WorldAutomation.Net rules database provided by Derakel :P ...`\n\n<:wa:324446350211284992> __**WORLDAUTOMATION.NET RULES**__ <:wa:324446350211284992>\n\n**Member Rules\n===========================**\n```css\n#1 Respect the Decisions of the Staff. Do not undermine their authority.\n\n#2 We are an English speaking Community mostly. Support cannot be guaranteed, but we will try.\n\n#3 DO NOT disrespect anyone. Racism, Sexism or any other -ism is not tolerated.\n\n#4 DO NOT act in a Childish Behavior, CAUSE DRAMA or TROLL other Members.\n\n#5 DO NOT Spam/Harass Channels with either Text, Microphone or Bots.\n\n#6 DO NOT excessively use capslock. (LOL or ROFL is fine)\n\n#7 DO NOT Advertise other Discords, Servers and/or Communities. Streamers are an exception if they are promoting our Community.\n\n#8 DO NOT bring conversations into the wrong Channels.\n\n#9 Everyone swears... BUT overuse of profanity is very much frowned upon.\n\n#10 Do not speak about illegal activities, substances or anything of the sort.\n\n#11 If you have a Complaint, Question or Issue; please go to https://www.worldautomation.net and submit a topic.```\n**Staff Rules\n===========================**\n```css\n#1 Do not change Discord Settings without Administrative Authorization.\n\n#2 Do not assume that you are above anyone or any Rules that Members must follow.\n#3 Just because you 'can' do something, doesn't mean you should.```", {
+			msg.channel.send("<:main_computer:420575980198035456> <:wa:324446350211284992>  `[Main Computer] WA.Net# Initializing WorldAutomation.Net rules database provided by Derakel :P ...`\n\n<:wa:324446350211284992> __**WORLDAUTOMATION.NET RULES**__ <:wa:324446350211284992>\n\n**Member Rules\n===========================**\n```css\n#1 Respect the Decisions of the Staff. Do not undermine their authority.\n\n#2 We are an English speaking Community mostly. Support cannot be guaranteed, but we will try.\n\n#3 DO NOT disrespect anyone. Racism, Sexism or any other -ism is not tolerated.\n\n#4 DO NOT act in a Childish Behavior, CAUSE DRAMA or TROLL other Members.\n\n#5 DO NOT Spam/Harass Channels with either Text, Microphone or Bots.\n\n#6 DO NOT excessively use capslock. (LOL or ROFL is fine)\n\n#7 DO NOT Advertise other Discords, Servers and/or Communities. Streamers are an exception if they are promoting our Community.\n\n#8 DO NOT bring conversations into the wrong Channels.\n\n#9 Everyone swears... BUT overuse of profanity is very much frowned upon.\n\n#10 Do not speak about illegal activities, substances or anything of the sort.\n\n#11 If you have a Complaint, Question or Issue; please go to https://www.worldautomation.net and submit a topic.```\n**Staff Rules\n===========================**\n```css\n#1 Do not change Discord Settings without Administrative Authorization.\n\n#2 Do not assume that you are above anyone or any Rules that Members must follow.\n#3 Just because you 'can' do something, doesn't mean you should.```", {
 				files: [
 				"https://www.worldautomation.net/images/home_logo.png"
 			]
@@ -954,7 +954,7 @@ const commands = {
 			    }
 			  }
 			}); */
-			msg.channel.send("<:main_computer:420575980198035456> :information_source:  `[Main Computer] Bot @ WA.Net# Initializing WorldAutomation.Net...` ```prolog\nWelcome to the WorldAutomation.Net Minecraft Community! We host our own custom Minecraft modpack and server. Actively developed and in use for over 4 years, we have every mod and plugin you could possibly need/want! \n\nPlease check our chat channels, or visit our website at the link below for the mod list, launcher information,\nconnect information and much much more. Good luck!```\n<:dirt:411768156512583684> <:sword:411768397869875220> <:steve:411768157083009024> <:sword:411768397869875220> <:dirt:411768156512583684> <:sword:411768397869875220> <:steve:411768157083009024> <:sword:411768397869875220> <:dirt:411768156512583684> <:sword:411768397869875220> <:steve:411768157083009024> <:sword:411768397869875220> <:dirt:411768156512583684>\n\nGet it Now!  [ https://www.worldautomation.net/download ]\n\nJoin <#234843566248034305> for regular chat and to meet the community!\n\n<:dirt:411768156512583684> <:sword:411768397869875220> <:steve:411768157083009024> <:sword:411768397869875220> <:dirt:411768156512583684> <:sword:411768397869875220> <:steve:411768157083009024> <:sword:411768397869875220> <:dirt:411768156512583684> <:sword:411768397869875220> <:steve:411768157083009024> <:sword:411768397869875220> <:dirt:411768156512583684>\n\n**SERVER INFORMATION**```css\nMinecraft (Modded) Version { 1.7.10 }\nServer Address { worldautomation.net }\nServer Port { 25565 }\n```\n**OPEN A SUPPORT TICKET** - **!open**\n```ldif\nCreates a private channel and staff will assist you when they are available.\n\nFor immediate help, check the FTB Wiki for general progression, or check out site for various custom tweaks and recipes.```\n**DOWNLOAD GAME** - **!download**\n```ldif\nProvides the downloads for Windows, Linux and OSX players.```", {
+			msg.channel.send("<:main_computer:420575980198035456> :information_source:  `[Main Computer] WA.Net# Initializing WorldAutomation.Net...` ```prolog\nWelcome to the WorldAutomation.Net Minecraft Community! We host our own custom Minecraft modpack and server. Actively developed and in use for over 4 years, we have every mod and plugin you could possibly need/want! \n\nPlease check our chat channels, or visit our website at the link below for the mod list, launcher information,\nconnect information and much much more. Good luck!```\n<:dirt:411768156512583684> <:sword:411768397869875220> <:steve:411768157083009024> <:sword:411768397869875220> <:dirt:411768156512583684> <:sword:411768397869875220> <:steve:411768157083009024> <:sword:411768397869875220> <:dirt:411768156512583684> <:sword:411768397869875220> <:steve:411768157083009024> <:sword:411768397869875220> <:dirt:411768156512583684>\n\nGet it Now!  [ https://www.worldautomation.net/download ]\n\nJoin <#234843566248034305> for regular chat and to meet the community!\n\n<:dirt:411768156512583684> <:sword:411768397869875220> <:steve:411768157083009024> <:sword:411768397869875220> <:dirt:411768156512583684> <:sword:411768397869875220> <:steve:411768157083009024> <:sword:411768397869875220> <:dirt:411768156512583684> <:sword:411768397869875220> <:steve:411768157083009024> <:sword:411768397869875220> <:dirt:411768156512583684>\n\n**SERVER INFORMATION**```css\nMinecraft (Modded) Version { 1.7.10 }\nServer Address { worldautomation.net }\nServer Port { 25565 }\n```\n**OPEN A SUPPORT TICKET** - **!open**\n```ldif\nCreates a private channel and staff will assist you when they are available.\n\nFor immediate help, check the FTB Wiki for general progression, or check out site for various custom tweaks and recipes.```\n**DOWNLOAD GAME** - **!download**\n```ldif\nProvides the downloads for Windows, Linux and OSX players.```", {
 				files: [
 				"https://www.worldautomation.net/images/home_logo.png"
 			]
@@ -962,13 +962,13 @@ const commands = {
 	},'status' : (msg) => {
 		//msg.delete(1000);
 		function putsMem(error, stdout, stderr) { 
-			msg.channel.send("<:main_computer:420575980198035456> <:memory:420679644401106954>  `[Main Computer] Bot @ WA.Net# Querying bot node memory processes statistics...` ```css\n"+stdout+"```")
+			msg.channel.send("<:main_computer:420575980198035456> <:memory:420679644401106954>  `[Main Computer] WA.Net# Querying bot node memory processes statistics...` ```css\n"+stdout+"```")
 		}
 		function putsCpu(error, stdout, stderr) { 
-			msg.channel.send("<:main_computer:420575980198035456> <:chip:421925899907104770>  `[Main Computer] Bot @ WA.Net# Querying bot node CPU processes statistics...` ```css\n"+stdout+"```")
+			msg.channel.send("<:main_computer:420575980198035456> <:chip:421925899907104770>  `[Main Computer] WA.Net# Querying bot node CPU processes statistics...` ```css\n"+stdout+"```")
 		}
 		function putsTop(error, stdout, stderr) { 
-			msg.channel.send("<:main_computer:420575980198035456> <:pulse:420859435125178378>  `[Main Computer] Bot @ WA.Net# Querying bot node average system load statistics...` ```css\n"+stdout+"```")
+			msg.channel.send("<:main_computer:420575980198035456> <:pulse:420859435125178378>  `[Main Computer] WA.Net# Querying bot node average system load statistics...` ```css\n"+stdout+"```")
 		}		
 		var freeMem = prettySize(os.freemem());
 		var totalMem = prettySize(os.totalmem());
@@ -984,7 +984,7 @@ const commands = {
 				// Continue with your processing here.
 				request.get('http://mc.worldautomation.net:57100/bot/status-uptime.report', function (error, response, uptime) {
 					if (!error && response.statusCode == 200) {
-						msg.channel.send("<:main_computer:420575980198035456> <:wa:324446350211284992>  `[Main Computer] Bot @ WA.Net# Querying all game and bot nodes, generating operational summary...` ```css\nBot Node Memory Usage: "+freeMem+" Free / "+totalMem+" Total \n\nBot Node OS/Arch: "+os.type()+" ("+os.arch()+")\n\nBot Node FQDN: "+os.hostname()+"\n\nBot Node Uptime: "+upTime+"```");				
+						msg.channel.send("<:main_computer:420575980198035456> <:wa:324446350211284992>  `[Main Computer] WA.Net# Querying all game and bot nodes, generating operational summary...` ```css\nBot Node Memory Usage: "+freeMem+" Free / "+totalMem+" Total \n\nBot Node OS/Arch: "+os.type()+" ("+os.arch()+")\n\nBot Node FQDN: "+os.hostname()+"\n\nBot Node Uptime: "+upTime+"```");				
 						var top = "top -b -n 1 | head -5;";
 						var cpu = "echo Top Chip Consumers; echo ---------; top -o %CPU -b -n 1 | head -20 | tail -n 14;";
 						var mem = "echo Top Memory Consumers; echo ---------; top -o %MEM -b -n 1 | head -20 | tail -n 14;";
@@ -994,9 +994,9 @@ const commands = {
 						radioNowPlaying(msg.channel.id);
 						function puts(error, stdout, stderr) { 
 							if(stdout == "") {
-								msg.channel.send("<:main_computer:420575980198035456> <:pulse:420859435125178378>  `[Main Computer] Bot @ WA.Net# Querying entities, items, blocks, dimensions, overall health and ticks per second...` ```Well, I may be artificial, but I am far from perfect. Error!```");			
+								msg.channel.send("<:main_computer:420575980198035456> <:pulse:420859435125178378>  `[Main Computer] WA.Net# Querying entities, items, blocks, dimensions, overall health and ticks per second...` ```Well, I may be artificial, but I am far from perfect. Error!```");			
 							} else {
-								msg.channel.send("<:main_computer:420575980198035456> <:pulse:420859435125178378>  `[Main Computer] Bot @ WA.Net# Querying entities, items, blocks, dimensions, overall health and ticks per second...` ```css\n"+stdout+"```");
+								msg.channel.send("<:main_computer:420575980198035456> <:pulse:420859435125178378>  `[Main Computer] WA.Net# Querying entities, items, blocks, dimensions, overall health and ticks per second...` ```css\n"+stdout+"```");
 							}
 						}
 						if (systemOS === "win32") {
@@ -1011,11 +1011,11 @@ const commands = {
 	
 	},'help': (msg) => {
 		if(msg.member.roles.find("name", "Admin") || msg.member.roles.find("name", "GM") || msg.member.roles.find("name", "Mod")) {
-			msg.author.send("<:main_computer:420575980198035456> <:wa:324446350211284992>  `[Main Computer] Bot @ WA.Net# Since you are staff, here are some extras...` ```css\n.MINECRAFT_PLAYER_FIXES\n!unstuck [playerName] { Teleports the player to spawn. }\n!reset [playerName] {Resets players account password. The will get a new pin on join. }\n\n.BOT\n!status { Get Main Computer's (BOT) node statistics. }\n\n```");
+			msg.author.send("<:main_computer:420575980198035456> <:wa:324446350211284992>  `[Main Computer] WA.Net# Since you are staff, here are some extras...` ```css\n.MINECRAFT_PLAYER_FIXES\n!unstuck [playerName] { Teleports the player to spawn. }\n!reset [playerName] {Resets players account password. The will get a new pin on join. }\n\n.BOT\n!status { Get Main Computer's (BOT) node statistics. }\n\n```");
 
 		//Rest of your code
 		}
-		msg.channel.send("<:main_computer:420575980198035456> <:wa:324446350211284992>  `[Main Computer] Bot @ WA.Net# Here are my Discord commands...` ```css\n.MINECRAFT\n/register [newPassword] { Register your player name in game, and reserves your website account for that name. }\n/login [yourPassword] { Only needed once per server restart. Verifies your identity. }\n\/changepass [oldPassword] [newPassword] { Changes your in game and website password. }\n\n.MINECRAFT_RADIO \n/add [searchTerm] { Get and grab first result as a new radio track. }\n/skip { Skip to the next track in the queue. }\n/remove { Removes currently playing track from the queue. }\n\n.BOT_PLAYER\n!player [playerName] { Get the information card for a player. }\n!achievements top { Get current top achievement owners server wide. }\n\!achievements [playerName] { Get a players achievement list. }\n!time top { Get top playtimes for the server. }\n!time [playerName] { Get a players time statistics. }\n!tps { Get current WA.Net server TPS. }\n!open { Opens a support ticket with staff. }\n\n.BOT_RADIO \n!radio add [searchTerm] { Get and grab first result as a new radio track. }\n!radio skip { Skip to the next track in the queue. }\n!radio remove { Removes currently playing track from the queue. }\n!radio nowplaying { Shows currently playing live track information. }\n!radio queue { Shows the current live radio queue and lineup. }\n\n.BOT_GOOGLE\n!google [searchTerm] { Search Google and return first result. }\n\n.BOT_YOUTUBE\n!ytdl [searchTerm] { Download, encode and serve up the video off our servers as MP4 for later or mobile. }\n\n.BOT_NETWORK_UTILITY\n!speedtest { Run a network speed test on Main Computer's (BOT) node. }\n!nmap [hostName] { Perform a port scan on host/IP. }\n!ping [hostName] { Ping a host/IP. }\n!nslookup [hostName] { Get domain name server information on a host/IP. }\n!dig [hostName] { Get network dig information from a host/IP. }\n!traceroute [hostName] { Expose the network route of a host/IP. }\n\n.BOT_MISCELLANEOUS\n!about { About this bot. }```");		
+		msg.channel.send("<:main_computer:420575980198035456> <:wa:324446350211284992>  `[Main Computer] WA.Net# Here are my Discord commands...` ```css\n.MINECRAFT\n/register [newPassword] { Register your player name in game, and reserves your website account for that name. }\n/login [yourPassword] { Only needed once per server restart. Verifies your identity. }\n\/changepass [oldPassword] [newPassword] { Changes your in game and website password. }\n\n.MINECRAFT_RADIO \n/add [searchTerm] { Get and grab first result as a new radio track. }\n/skip { Skip to the next track in the queue. }\n/remove { Removes currently playing track from the queue. }\n\n.BOT_PLAYER\n!player [playerName] { Get the information card for a player. }\n!achievements top { Get current top achievement owners server wide. }\n\!achievements [playerName] { Get a players achievement list. }\n!time top { Get top playtimes for the server. }\n!time [playerName] { Get a players time statistics. }\n!tps { Get current WA.Net server TPS. }\n!open { Opens a support ticket with staff. }\n\n.BOT_RADIO \n!radio add [searchTerm] { Get and grab first result as a new radio track. }\n!radio skip { Skip to the next track in the queue. }\n!radio remove { Removes currently playing track from the queue. }\n!radio nowplaying { Shows currently playing live track information. }\n!radio queue { Shows the current live radio queue and lineup. }\n\n.BOT_GOOGLE\n!google [searchTerm] { Search Google and return first result. }\n\n.BOT_YOUTUBE\n!ytdl [searchTerm] { Download, encode and serve up the video off our servers as MP4 for later or mobile. }\n\n.BOT_NETWORK_UTILITY\n!speedtest { Run a network speed test on Main Computer's (BOT) node. }\n!nmap [hostName] { Perform a port scan on host/IP. }\n!ping [hostName] { Ping a host/IP. }\n!nslookup [hostName] { Get domain name server information on a host/IP. }\n!dig [hostName] { Get network dig information from a host/IP. }\n!traceroute [hostName] { Expose the network route of a host/IP. }\n\n.BOT_MISCELLANEOUS\n!about { About this bot. }```");		
 		//msg.delete(1000);
 	},'ping': (msg) => {
 		//msg.delete(1000);		
@@ -1024,7 +1024,7 @@ const commands = {
 		var sys = require('util');
 		var exec = require('child_process').exec;
 		function puts(error, stdout, stderr) { 
-			msg.channel.send("<:main_computer:420575980198035456> <:terminalreal:421547027051184128>  `[Main Computer] Bot @ WA.Net#` "+mentionCommandAuthor+" `I pinged "+host+" with a few packets, see attached...`\n```ldif\n"+stdout+"```"); 
+			msg.channel.send("<:main_computer:420575980198035456> <:terminalreal:421547027051184128>  `[Main Computer] WA.Net#` "+mentionCommandAuthor+" `I pinged "+host+" with a few packets, see attached...`\n```ldif\n"+stdout+"```"); 
 		}
 		if (systemOS === "win32") {
 			exec("ping -n 5 "+host, puts);
@@ -1038,9 +1038,9 @@ const commands = {
 		var exec = require('child_process').exec;
 		function puts(error, stdout, stderr) { 
 			if(stdout == "") {
-				msg.channel.send("<:main_computer:420575980198035456> <:pulse:420859435125178378>  `[Main Computer] Bot @ WA.Net# Querying entities, items, blocks, dimensions, overall health and ticks per second...` ```Well, I may be artificial, but I am far from perfect. Error!```");			
+				msg.channel.send("<:main_computer:420575980198035456> <:pulse:420859435125178378>  `[Main Computer] WA.Net# Querying entities, items, blocks, dimensions, overall health and ticks per second...` ```Well, I may be artificial, but I am far from perfect. Error!```");			
 			} else {
-				msg.channel.send("<:main_computer:420575980198035456> <:pulse:420859435125178378>  `[Main Computer] Bot @ WA.Net# Querying entities, items, blocks, dimensions, overall health and ticks per second...` ```css\n"+stdout+"```");
+				msg.channel.send("<:main_computer:420575980198035456> <:pulse:420859435125178378>  `[Main Computer] WA.Net# Querying entities, items, blocks, dimensions, overall health and ticks per second...` ```css\n"+stdout+"```");
 			}
 		}
 		if (systemOS === "win32") {
@@ -1055,7 +1055,7 @@ const commands = {
 			var sys = require('util');
 			var exec = require('child_process').exec;
 			function puts(error, stdout, stderr) { 
-				msg.channel.send("<:main_computer:420575980198035456> :medal:  `[Main Computer] Bot @ WA.Net# Displaying top achievements for user "+user+"` ```css\n"+stdout+"```");
+				msg.channel.send("<:main_computer:420575980198035456> :medal:  `[Main Computer] WA.Net# Displaying top achievements for user "+user+"` ```css\n"+stdout+"```");
 			}
 			if (systemOS === "win32") {
 				//exec("ping -n 5 "+host, puts);
@@ -1063,15 +1063,15 @@ const commands = {
 				exec("/storage/aach.sh | iconv -f utf-8 -t utf-8 -c", puts);
 			}
 		} else if (!user) {
-			msg.channel.send("<:main_computer:420575980198035456> :medal: :exclamation: `[Main Computer] Bot @ WA.Net# Must either specify [top] or a [playerName]!`");
+			msg.channel.send("<:main_computer:420575980198035456> :medal: :exclamation: `[Main Computer] WA.Net# Must either specify [top] or a [playerName]!`");
 		} else {
-			msg.channel.send("<:main_computer:420575980198035456> :medal:  `[Main Computer] Bot @ WA.Net# Displaying recent top achievements for all users...` ```css\nNot Yet Implemented!```");
+			msg.channel.send("<:main_computer:420575980198035456> :medal:  `[Main Computer] WA.Net# Displaying recent top achievements for all users...` ```css\nNot Yet Implemented!```");
 		}
 	},'time': (msg) => {
 		//msg.delete(1000);		
 		let user = msg.content.split(' ')[1];
 		if (!user) {
-			msg.channel.send("<:main_computer:420575980198035456> :medal: :exclamation: `[Main Computer] Bot @ WA.Net# Must either specify [top] or a [playerName]!`");
+			msg.channel.send("<:main_computer:420575980198035456> :medal: :exclamation: `[Main Computer] WA.Net# Must either specify [top] or a [playerName]!`");
 		} else {
 			var sys = require('util');
 			var exec = require('child_process').exec;
@@ -1080,9 +1080,9 @@ const commands = {
 				stdout = stdout.replace(/WA.Net# /g, "");
 				stdout = stdout.replace(/-- WorldAutomation.Net   OnTime    LeaderBoard--/g, "");
 				if (user == "top") {
-					msg.channel.send("<:main_computer:420575980198035456> :stopwatch:  `[Main Computer] Bot @ WA.Net# Querying time statistics for all players...` ```css\n"+stdout+"```");
+					msg.channel.send("<:main_computer:420575980198035456> :stopwatch:  `[Main Computer] WA.Net# Querying time statistics for all players...` ```css\n"+stdout+"```");
 				} else {
-					msg.channel.send("<:main_computer:420575980198035456> :stopwatch:  `[Main Computer] Bot @ WA.Net# Querying "+user+"'s time statistics...` ```css\n"+stdout+"```");
+					msg.channel.send("<:main_computer:420575980198035456> :stopwatch:  `[Main Computer] WA.Net# Querying "+user+"'s time statistics...` ```css\n"+stdout+"```");
 				}
 			}
 			if (systemOS === "win32") {
@@ -1093,7 +1093,7 @@ const commands = {
 		}
 	},'download': (msg) => {
 		//msg.delete(1000);
-		msg.channel.send("<:main_computer:420575980198035456> <:wa:324446350211284992>  `[Main Computer] Bot @ WA.Net# Compiling and preparing recent game download links...` ```css\nWINDOWS OS { WA-Installer.exe }\n\nUNIVERSAL OS { WorldAutomation.jar }\n\n\n\nBest for our game and mod pack. \n\nImproves textures, usability, UI, and overall player experience.\n\n\n\nREQUIREMENTS { Java 8 x64 Required }\n\nAUTHORS { Th3Fanbus, MrJoseph }\n\nSOURCE { github.com/worldautomation/WA-Bot }```**Also Available on the popular Technic Launcher:** **https://www.technicpack.net/modpack/worldautomation**\n\n", {
+		msg.channel.send("<:main_computer:420575980198035456> <:wa:324446350211284992>  `[Main Computer] WA.Net# Compiling and preparing recent game download links...` ```css\nWINDOWS OS { WA-Installer.exe }\n\nUNIVERSAL OS { WorldAutomation.jar }\n\n\n\nBest for our game and mod pack. \n\nImproves textures, usability, UI, and overall player experience.\n\n\n\nREQUIREMENTS { Java 8 x64 Required }\n\nAUTHORS { Th3Fanbus, MrJoseph }\n\nSOURCE { github.com/worldautomation/WA-Bot }```**Also Available on the popular Technic Launcher:** **https://www.technicpack.net/modpack/worldautomation**\n\n", {
 /* 			embed: {
 				color: 0xff8000,
 				author: {
@@ -1143,11 +1143,11 @@ const commands = {
 	},'speedtest': (msg) => {
 		//msg.delete(1000);		
 		var mentionCommandAuthor = "<@"+msg.author.id+">";
-		msg.channel.send("<:main_computer:420575980198035456> <:terminalreal:421547027051184128>  `[Main Computer] Bot @ WA.Net# Running speed test from bot host node... please wait...`");
+		msg.channel.send("<:main_computer:420575980198035456> <:terminalreal:421547027051184128>  `[Main Computer] WA.Net# Running speed test from bot host node... please wait...`");
 		var sys = require('util');
 		var exec = require('child_process').exec;
 		function puts(error, stdout, stderr) { 
-			msg.channel.send("<:main_computer:420575980198035456> <:terminalreal:421547027051184128>  `[Main Computer] Bot @ WA.Net#` "+mentionCommandAuthor+" `Speed test result is complete, see attached.`\n```css\n"+stdout+"```"); 
+			msg.channel.send("<:main_computer:420575980198035456> <:terminalreal:421547027051184128>  `[Main Computer] WA.Net#` "+mentionCommandAuthor+" `Speed test result is complete, see attached.`\n```css\n"+stdout+"```"); 
 		}
 		exec("speedtest-cli", puts);
 	},'update': (msg) => {
@@ -1179,7 +1179,7 @@ const commands = {
 		var sys = require('util');
 		var exec = require('child_process').exec;
 		function puts(error, stdout, stderr) { 
-			msg.channel.send("<:main_computer:420575980198035456> <:terminalreal:421547027051184128>  `[Main Computer] Bot @ WA.Net#` "+mentionCommandAuthor+" `Pinging name server lookup on "+host+"...`\n```css\n"+stdout+"```"); 
+			msg.channel.send("<:main_computer:420575980198035456> <:terminalreal:421547027051184128>  `[Main Computer] WA.Net#` "+mentionCommandAuthor+" `Pinging name server lookup on "+host+"...`\n```css\n"+stdout+"```"); 
 		}
 		exec("nslookup "+host, puts);
  },'dig': (msg) => {
@@ -1189,7 +1189,7 @@ const commands = {
 		var sys = require('util');
 		var exec = require('child_process').exec;
 		function puts(error, stdout, stderr) { 
-			msg.channel.send("<:main_computer:420575980198035456> <:terminalreal:421547027051184128>  `[Main Computer] Bot @ WA.Net#` "+mentionCommandAuthor+" `Digging network registry information for "+host+"...`\n```css\n"+stdout+"```"); 
+			msg.channel.send("<:main_computer:420575980198035456> <:terminalreal:421547027051184128>  `[Main Computer] WA.Net#` "+mentionCommandAuthor+" `Digging network registry information for "+host+"...`\n```css\n"+stdout+"```"); 
 		}
 		exec("dig "+host, puts);
  },'gitdiff': (msg) => {
@@ -1203,7 +1203,7 @@ const commands = {
 		const warning = client.emojis.find("name", "warning");
 		function puts(error, stdout, stderr) {
 			var output = stdout.replace(/`/g, "");
-			msg.channel.send("<:main_computer:420575980198035456> <:terminalreal:421547027051184128>  `[Main Computer] Bot @ WA.Net# Displaying recent cybernetic differences against revision #"+which+" of my code...` ```css\n"+output+"```");
+			msg.channel.send("<:main_computer:420575980198035456> <:terminalreal:421547027051184128>  `[Main Computer] WA.Net# Displaying recent cybernetic differences against revision #"+which+" of my code...` ```css\n"+output+"```");
 		}
 		//exec("git log --graph --abbrev-commit -n 5", puts);
 		if (!which || which == 0) {
@@ -1225,7 +1225,7 @@ const commands = {
 		function puts(err, results) {
 			//msg.channel.send(main_computer+" "+main_minecraft+" `[Main Computer] Bot is displaying recent Discord cybernetics...` ```http\n"+stdout+"```");
 			//if(err !== null) {
-				//msg.channel.send(main_computer+" <:magnetv:317627959940743168> :warning: `[Main Computer] Bot @ WA.Net# Received no results for "+request+"!`");
+				//msg.channel.send(main_computer+" <:magnetv:317627959940743168> :warning: `[Main Computer] WA.Net# Received no results for "+request+"!`");
 			//} else {
 				console.log("Results: "+results.title);
 				console.log("Error: "+err);
@@ -1238,10 +1238,10 @@ const commands = {
 				   console.log(obj['title']);
 				   console.log(theShit);
 				   //theEmail = theEmail + theShit;
-				   //msg.channel.send(main_computer+" <:magnetv:317627959940743168> `[Main Computer] Bot @ WA.Net# Displaying results for "+request+"...` ```python\n"+theEmail+"```")
+				   //msg.channel.send(main_computer+" <:magnetv:317627959940743168> `[Main Computer] WA.Net# Displaying results for "+request+"...` ```python\n"+theEmail+"```")
 				}		
 			  }   */
-				//msg.channel.send(main_computer+" <:magnetv:317627959940743168> `[Main Computer] Bot @ WA.Net# Displaying results for "+request+"...` ```python\n"+results[1]['title']+"```");
+				//msg.channel.send(main_computer+" <:magnetv:317627959940743168> `[Main Computer] WA.Net# Displaying results for "+request+"...` ```python\n"+results[1]['title']+"```");
 			//}
 		}
 		//exec("git log --graph --abbrev-commit -n 5", puts);
@@ -1253,7 +1253,7 @@ const commands = {
 	switch(cmd) {
 		case "skip":
 			exec("pkill -10 ices && pkill -1 ices");
-			msg.channel.send("<:main_computer:420575980198035456> :headphones: :fast_forward:  `[Main Computer] Radio @ WA.Net# Skipping to the next radio track...`");		
+			msg.channel.send("<:main_computer:420575980198035456> :headphones: :fast_forward:  `[Live Radio] WA.Net# Skipping to the next radio track...`");		
 			
 			setTimeout(function () {
 				radioNowPlaying("422898611106480139");
@@ -1278,9 +1278,9 @@ const commands = {
 			exec("rm -rf /storage/WA-Bot/assets/public/music/*.mp3");
 			exec("cp -rf /storage/WA-Bot/assets/public/music-orig/*.mp3 /storage/WA-Bot/assets/public/music/.");
 			exec("mv /storage/listen.m3u.orig /storage/listen.m3u");
- 			msg.channel.send("<:main_computer:420575980198035456> :headphones: :wastebasket:  `[Main Computer] Radio @ WA.Net# Wiping radio queue...`");
+ 			msg.channel.send("<:main_computer:420575980198035456> :headphones: :wastebasket:  `[Live Radio] WA.Net# Wiping radio queue...`");
 			radioQueue("422898611106480139");
- 			msg.channel.send("<:main_computer:420575980198035456> :headphones: :white_check_mark:  `[Main Computer] Radio @ WA.Net# Radio queue wipe completed!`");
+ 			msg.channel.send("<:main_computer:420575980198035456> :headphones: :white_check_mark:  `[Live Radio] WA.Net# Radio queue wipe completed!`");
 			exec("pkill -10 ices && pkill -1 ices");			
 			break;			
 		case "play":
@@ -1289,7 +1289,7 @@ const commands = {
 			var voiceChannel = client.channels.get(discord_channel_id_radio);
 			voiceChannel.join().then(connection => {
 				console.log("Starting WorldAutomation.Net Radio Streamer....");
-				client.channels.get(discord_channel_id_log).send("<:main_computer:420575980198035456> :headphones: <:start:420839451384610816>  `[Main Computer] Radio @ WA.Net# Initializing the WorldAutomation.Net Live Radio feed encoder...`");
+				client.channels.get(discord_channel_id_log).send("<:main_computer:420575980198035456> :headphones: <:start:420839451384610816>  `[Live Radio] WA.Net# Initializing the WorldAutomation.Net Live Radio feed encoder...`");
 				//radioNowPlaying("422898611106480139");
 				//const stream = ytdl('http://listen.radionomy.com/hotmixradio-lounge-128.m3u', { filter : 'audioonly' });
 				//const stream = ffmpeg('https://radio.worldautomation.net/music/Mad_World_-_Gary_Jules.mp3');
@@ -1297,7 +1297,7 @@ const commands = {
 				const dispatcher = connection.playStream("http://radio.worldautomation.net/listen.mp3", streamOptions);
 				dispatcher.on("end", end => {
 					console.log("Main WorldAutomation.Net ICECAST Server has quit broadcasting!");
-					msg.channel.send("<:main_computer:420575980198035456> :headphones: <:restart:420839450914979841>  `[Main Computer] Radio @ WA.Net# Main Radio feed has quit broadcasting, check the servers!`");
+					msg.channel.send("<:main_computer:420575980198035456> :headphones: <:restart:420839450914979841>  `[Live Radio] WA.Net# Main Radio feed has quit broadcasting, check the servers!`");
 					voiceChannel.leave();
 				});
 			}).catch(err => console.log(err));
@@ -1305,10 +1305,10 @@ const commands = {
 		case "add":
 			let searchRaw = msg.content.replace(msg.content.split(' ')[0], "").replace(msg.content.split(' ')[1],"");
 			if(searchRaw == "" || !searchRaw) {
-				msg.channel.send("<:main_computer:420575980198035456> :headphones: :exclamation: `[Main Computer] Radio @ WA.Net# You need to supply a search term with !radio add [searchTerm]...`");	
+				msg.channel.send("<:main_computer:420575980198035456> :headphones: :exclamation: `[Live Radio] WA.Net# You need to supply a search term with !radio add [searchTerm]...`");	
 				return true;
 			}
-			msg.channel.send("<:main_computer:420575980198035456> :headphones: :mag_right: `[Main Computer] Radio @ WA.Net# Searching YouTube for `"+searchRaw.substr(1)+" `...`");	
+			msg.channel.send("<:main_computer:420575980198035456> :headphones: :mag_right: `[Live Radio] WA.Net# Searching YouTube for `"+searchRaw.substr(1)+" `...`");	
 			console.log(searchRaw);
 			var YouTube = require('youtube-node');
 			var mentionCommandAuthor = "<@"+msg.author.id+">";
@@ -1326,7 +1326,7 @@ const commands = {
 						var videoNamePretty = video.snippet.title;				
 						video.snippet.title = video.snippet.title.replace(/[^a-zA-Z0-9-_]/g, '_').replace("_-_", "-").replace("__-__","-");
 						var videoDownload = video.snippet.title;
-						var playerQueryIntro = "<:main_computer:420575980198035456> :headphones: :small_red_triangle_down: `[Main Computer] Radio @ WA.Net# Starting download and encoding for "+videoNamePretty+"...`";
+						var playerQueryIntro = "<:main_computer:420575980198035456> :headphones: :small_red_triangle_down: `[Live Radio] WA.Net# Starting download and encoding for "+videoNamePretty+"...`";
 						var playerEmbed = {embed: {
 							color: 0x000000,
 							title: videoNamePretty,					
@@ -1360,7 +1360,7 @@ const commands = {
 								  } else {
 									exec("rm /storage/listen.m3u");
 									exec("find /storage/WA-Bot/music | grep .mp3 > /storage/listen.m3u");
-									msg.channel.send("<:main_computer:420575980198035456> :headphones: :white_check_mark:  `[Main Computer] Radio @ WA.Net# Added request from ` "+mentionCommandAuthor+" ` to Live Radio...` ```"+videoNamePretty+"\nDownloaded and encoded into MP3 (Audio)...\nAdded to WorldAutomation.Net Live Radio Queue...\nEnjoy!```Download it Here -> "+body.id+"\nListen Live in **#radio**, in Game or at -> https://www.worldautomation.net/listen.mp3");	
+									msg.channel.send("<:main_computer:420575980198035456> :headphones: :white_check_mark:  `[Live Radio] WA.Net# Added request from ` "+mentionCommandAuthor+" ` to Live Radio...` ```"+videoNamePretty+"\nDownloaded and encoded into MP3 (Audio)...\nAdded to WorldAutomation.Net Live Radio Queue...\nEnjoy!```Download it Here -> "+body.id+"\nListen Live in **#radio**, in Game or at -> https://www.worldautomation.net/listen.mp3");	
 									//console.log(response.statusCode, body)
 								  }
 								})
@@ -1405,11 +1405,11 @@ const commands = {
 		case "add":
 			let searchRaw = msg.content.replace(msg.content.split(' ')[0], "").replace(msg.content.split(' ')[1],"").replace(msg.content.split(' ')[2],"");
 			if(searchRaw == "" || !searchRaw) {
-				msg.channel.send("<:main_computer:420575980198035456> :headphones: :exclamation: `[Main Computer] Radio @ WA.Net# You need to supply a search term with !radio add [searchTerm]...`");	
+				msg.channel.send("<:main_computer:420575980198035456> :headphones: :exclamation: `[Live Radio] WA.Net# You need to supply a search term with !radio add [searchTerm]...`");	
 				return true;
 			}
-			msg.channel.send("<:main_computer:420575980198035456> :headphones: :mag_right: `[Main Computer] Radio @ WA.Net# Player "+msg.content.split(' ')[2]+" sent in game request for`"+searchRaw.substring(2)+" `...`");	
-			client.channels.get("419425539884056587").send("<:main_computer:420575980198035456> :headphones: :mag_right: `[Main Computer] Radio @ WA.Net# Player "+msg.content.split(' ')[2]+" sent in game request for`"+searchRaw.substring(2)+" `...`");	
+			msg.channel.send("<:main_computer:420575980198035456> :headphones: :mag_right: `[Live Radio] WA.Net# Player "+msg.content.split(' ')[2]+" sent in game request for`"+searchRaw.substring(2)+" `...`");	
+			client.channels.get("419425539884056587").send("<:main_computer:420575980198035456> :headphones: :mag_right: `[Live Radio] WA.Net# Player "+msg.content.split(' ')[2]+" sent in game request for`"+searchRaw.substring(2)+" `...`");	
 			var YouTube = require('youtube-node');
 			var mentionCommandAuthor = msg.content.split(' ')[2];
 			var youTube = new YouTube();
@@ -1428,7 +1428,7 @@ const commands = {
 						var videoNamePretty = video.snippet.title;				
 						video.snippet.title = video.snippet.title.replace(/[^a-zA-Z0-9-_]/g, '_').replace("_-_", "-").replace("__-__","-");
 						var videoDownload = video.snippet.title;
-						var playerQueryIntro = "<:main_computer:420575980198035456> :headphones: :small_red_triangle_down: `[Main Computer] Radio @ WA.Net# Starting download and encoding for "+videoNamePretty+"...`";
+						var playerQueryIntro = "<:main_computer:420575980198035456> :headphones: :small_red_triangle_down: `[Live Radio] WA.Net# Starting download and encoding for "+videoNamePretty+"...`";
 						var playerEmbed = {embed: {
 							color: 0x000000,
 							title: videoNamePretty,					
@@ -1462,7 +1462,7 @@ const commands = {
 								  } else {
 									exec("rm /storage/listen.m3u");
 									exec("find /storage/WA-Bot/music | grep .mp3 > /storage/listen.m3u");
-									msg.channel.send("<:main_computer:420575980198035456> :headphones: :white_check_mark:  `[Main Computer] Radio @ WA.Net# Added request from in game player "+mentionCommandAuthor+" to Live Radio...` ```"+videoNamePretty+"\nDownloaded and encoded into MP3 (Audio)...\nAdded to WorldAutomation.Net Live Radio Queue...\nEnjoy!```Download it Here -> "+body.id+"\nListen Live in **#radio**, in Game or at -> https://www.worldautomation.net/listen.mp3");	
+									msg.channel.send("<:main_computer:420575980198035456> :headphones: :white_check_mark:  `[Live Radio] WA.Net# Added request from in game player "+mentionCommandAuthor+" to Live Radio...` ```"+videoNamePretty+"\nDownloaded and encoded into MP3 (Audio)...\nAdded to WorldAutomation.Net Live Radio Queue...\nEnjoy!```Download it Here -> "+body.id+"\nListen Live in **#radio**, in Game or at -> https://www.worldautomation.net/listen.mp3");	
 									//console.log(response.statusCode, body)
 								  }
 								})
@@ -1586,7 +1586,7 @@ const commands = {
 		function puts(error, stdout, stderr) {
 			//stdout.substring(0, stdout.indexOf(" ", 2000));
 			//stdout.substring(stdout.indexOf(" ", 2000));
-			msg.channel.send("<:main_computer:420575980198035456> <:terminalreal:421547027051184128>  `[Main Computer] Bot @ WA.Net#` "+mentionCommandAuthor+" `Displaying port scan of "+host+"...` ```css\n"+stdout+"```");
+			msg.channel.send("<:main_computer:420575980198035456> <:terminalreal:421547027051184128>  `[Main Computer] WA.Net#` "+mentionCommandAuthor+" `Displaying port scan of "+host+"...` ```css\n"+stdout+"```");
 			//msg.channel.send(main_computer+" "+main_minecraft+" `[Main Computer] Bot is displaying recent Discord cybernetics...` ```http\n"+stdout.substring(stdout.indexOf(" ", 2000));
 		}
 		//exec("git log --graph --abbrev-commit -n 5", puts);
@@ -1602,7 +1602,7 @@ const commands = {
 			var output = stdout.replace(/`/g, "");
 			//stdout.substring(0, stdout.indexOf(" ", 2000));
 			//stdout.substring(stdout.indexOf(" ", 2000));
-			msg.channel.send("<:main_computer:420575980198035456> <:terminalreal:421547027051184128>  `[Main Computer] Bot @ WA.Net# Displaying current main terminal session...` ```"+output+"```");
+			msg.channel.send("<:main_computer:420575980198035456> <:terminalreal:421547027051184128>  `[Main Computer] WA.Net# Displaying current main terminal session...` ```"+output+"```");
 			//msg.channel.send(main_computer+" "+main_minecraft+" `[Main Computer] Bot is displaying recent Discord cybernetics...` ```"+stdout.substring(stdout.indexOf(" ", 2000));
 		}
 		//exec("git log --graph --abbrev-commit -n 5", puts);
@@ -1611,11 +1611,11 @@ const commands = {
 		//msg.delete(1000);		
 		let host = msg.content.split(' ')[1];
 		var mentionCommandAuthor = "<@"+msg.author.id+">";
-		msg.channel.send("<:main_computer:420575980198035456> <:terminalreal:421547027051184128>  `[Main Computer] Bot @ WA.Net# Tracing "+host+" through origin network... please wait...`");
+		msg.channel.send("<:main_computer:420575980198035456> <:terminalreal:421547027051184128>  `[Main Computer] WA.Net# Tracing "+host+" through origin network... please wait...`");
 		var sys = require('util');
 		var exec = require('child_process').exec;
 		function puts(error, stdout, stderr) { 
-			msg.channel.send("<:main_computer:420575980198035456> <:terminalreal:421547027051184128>  `[Main Computer] Bot @ WA.Net#` "+mentionCommandAuthor+" `Trace route result for "+host+" is complete, see attached.`\n```css\n"+stdout+"```"); 
+			msg.channel.send("<:main_computer:420575980198035456> <:terminalreal:421547027051184128>  `[Main Computer] WA.Net#` "+mentionCommandAuthor+" `Trace route result for "+host+" is complete, see attached.`\n```css\n"+stdout+"```"); 
 		}
      exec("traceroute "+host, puts);
  },'open': (msg) => {
@@ -1634,8 +1634,8 @@ const commands = {
 			allowed: 0x400 
 		}]).then(channel => { 
 			channel.setParent(discord_category_id_support); 
-			channel.send("<:main_computer:420575980198035456> :question:  `[Main Computer] Bot @ WA.Net# Created secure support ticket #"+ticketID+", for `"+mentionCommandAuthor+" `...` ```css\nTICKET { #"+ticketID+" }\nPLAYER { "+msg.author.username+" }\n\nPlease type a description of the issue, and someone will assist you shortly.\n\nUse [!close] to close the ticket once you are satisified!```")}).catch(error => console.log(error));
-		msg.channel.send("<:main_computer:420575980198035456> :question:  `[Main Computer] Bot @ WA.Net# Opened Ticket #"+ticketID+" for "+msg.author.username+", `<@&422659916021628928>` will assist you there!`");
+			channel.send("<:main_computer:420575980198035456> :question:  `[Main Computer] WA.Net# Created secure support ticket #"+ticketID+", for `"+mentionCommandAuthor+" `...` ```css\nTICKET { #"+ticketID+" }\nPLAYER { "+msg.author.username+" }\n\nPlease type a description of the issue, and someone will assist you shortly.\n\nUse [!close] to close the ticket once you are satisified!```")}).catch(error => console.log(error));
+		msg.channel.send("<:main_computer:420575980198035456> :question:  `[Main Computer] WA.Net# Opened Ticket #"+ticketID+" for "+msg.author.username+", `<@&422659916021628928>` will assist you there!`");
 		fs.writeFile('ticketID', ticketID, function(err){ if(err) return console.log(err); 
 	});
  },'close': (msg) => {
@@ -1782,7 +1782,7 @@ const commands = {
 				var mcHealth = 0;
 				var mcWallet = 0;
 				var playTimePretty = rows[0].playtime;
-				msg.channel.send("<:main_computer:420575980198035456> <:barcode:420860838438502400>  `[Main Computer] Bot @ WA.Net# Verified "+mcUser+" against the main identity database successfully!`");
+				msg.channel.send("<:main_computer:420575980198035456> <:barcode:420860838438502400>  `[Main Computer] WA.Net# Verified "+mcUser+" against the main identity database successfully!`");
 				conJoinMC.end();
 			})
 		})
@@ -1890,7 +1890,7 @@ const commands = {
 					var exec = require('child_process').exec;
 					function puts(error, stdout, stderr) { 
 						var cleanOut = stdout.replace(/WA.Net#  /g, "`Time Info` ");
-						var playerQueryIntro = "<:main_computer:420575980198035456> <:thumbprint:420873257370124290>  `[Main Computer] Bot @ WA.Net# Displaying credentials for "+mcUser+"...`";
+						var playerQueryIntro = "<:main_computer:420575980198035456> <:thumbprint:420873257370124290>  `[Main Computer] WA.Net# Displaying credentials for "+mcUser+"...`";
 						var playerEmbed = {embed: {
 							color: 0xff8000,
 							author: {
@@ -1953,11 +1953,11 @@ const commands = {
 				conJoinMC.query("SELECT * FROM `player_experience`,`player_time`,`player_accounts`,`permissions_inheritance` WHERE permissions_inheritance.child = player_accounts.player_uuid AND player_experience.player_name = '"+player+"' AND player_accounts.player_name = '"+player+"' AND player_time.playerName = '"+player+"';", function(err,rows) { 
 					if(err) { 
 						console.log("MySQL Error: "+err); 
-						msg.channel.send("<:main_computer:420575980198035456> <:barcode:420860838438502400>  `[Main Computer] Bot @ WA.Net# Not enough information for "+player+" yet, give it some time...`");
+						msg.channel.send("<:main_computer:420575980198035456> <:barcode:420860838438502400>  `[Main Computer] WA.Net# Not enough information for "+player+" yet, give it some time...`");
 						return true;
 					} 
 					if (!rows[0]) {
-						var playerQueryIntro = "<:main_computer:420575980198035456> <:barcode:420860838438502400>  `[Main Computer] Bot @ WA.Net# Displaying credentials for "+player+"...`";
+						var playerQueryIntro = "<:main_computer:420575980198035456> <:barcode:420860838438502400>  `[Main Computer] WA.Net# Displaying credentials for "+player+"...`";
 						var playerEmbed = {embed: {
 							color: 0xff8000,
 							author: {
@@ -1976,7 +1976,7 @@ const commands = {
 						msg.channel.send(playerQueryIntro, playerEmbed);
 						return true;
 					} else {
-						msg.channel.send("<:main_computer:420575980198035456> <:barcode:420860838438502400>  `[Main Computer] Bot @ WA.Net# Not enough information for "+player+" yet, give it some time...`");
+						msg.channel.send("<:main_computer:420575980198035456> <:barcode:420860838438502400>  `[Main Computer] WA.Net# Not enough information for "+player+" yet, give it some time...`");
 						return true;
 					}
 					var mcUser = rows[0].playerName;
@@ -2032,7 +2032,7 @@ const commands = {
 					var mcHealth = 0;
 					var mcWallet = 0;
 					var playTimePretty = rows[0].playtime;
-					var playerQueryIntro = "<:main_computer:420575980198035456> <:barcode:420860838438502400>  `[Main Computer] Bot @ WA.Net# Displaying credentials for "+mcUser+"...`";
+					var playerQueryIntro = "<:main_computer:420575980198035456> <:barcode:420860838438502400>  `[Main Computer] WA.Net# Displaying credentials for "+mcUser+"...`";
 					var playerEmbed = {embed: {
 						color: 0xff8000,
 						author: {
@@ -2074,7 +2074,7 @@ const commands = {
 		} else { 
 
 
-			msg.channel.send("<:main_computer:420575980198035456> <:thumbprint:420873257370124290>  `[Main Computer] Bot @ WA.Net# Detected that "+player+" is a new user!`");
+			msg.channel.send("<:main_computer:420575980198035456> <:thumbprint:420873257370124290>  `[Main Computer] WA.Net# Detected that "+player+" is a new user!`");
 
 		}
 	},'leave-minecraft': (msg) => {
@@ -2136,9 +2136,9 @@ const commands = {
 					var mcWallet = 0;
 					var playTimePretty = rows[0].playtime;
 					if (mcUser == "Nogura") {
-						msg.channel.send("<:main_computer:420575980198035456> :zzz:  `[Main Computer] Bot @ WA.Net# Placing "+mcUser+" into secure cryogenic stasis storage. Sleep well master!`");
+						msg.channel.send("<:main_computer:420575980198035456> :zzz:  `[Main Computer] WA.Net# Placing "+mcUser+" into secure cryogenic stasis storage. Sleep well master!`");
 					} else {
-						msg.channel.send("<:main_computer:420575980198035456> :zzz:  `[Main Computer] Bot @ WA.Net# Placing "+mcUser+" into secure cryogenic stasis storage.`");
+						msg.channel.send("<:main_computer:420575980198035456> :zzz:  `[Main Computer] WA.Net# Placing "+mcUser+" into secure cryogenic stasis storage.`");
 					}
 					conJoinMC.end();
 				})
@@ -2262,7 +2262,7 @@ client.on('message', msg => {
 });
 
 client.on('guildMemberAdd', member => {
-	client.channels.get("226249731112828928").send("<:main_computer:420575980198035456> <:wa:324446350211284992>  `[Main Computer] Bot @ WA.Net# Detected new player/human named "+member.user+"/"+member.id+"...`");
+	client.channels.get("226249731112828928").send("<:main_computer:420575980198035456> <:wa:324446350211284992>  `[Main Computer] WA.Net# Detected new player/human named "+member.user+"/"+member.id+"...`");
 	//discordLog("",'User '+member.user+' / '+member.id+' has joined the server!',member.user,member.id);
 	//console.log(client.server.roles.get("name", "Citizen"));
 });
