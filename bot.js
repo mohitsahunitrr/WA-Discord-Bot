@@ -862,7 +862,7 @@ const commands = {
 			    }
 			  }
 			}); */
-			msg.channel.send("<:main_computer:420575980198035456> <:wa:324446350211284992> :loudspeaker:  `[Main Computer] WA.Net# Announcement for all players. See attached.`\n"+announcement).then(function (message) {
+			msg.channel.send("<:main_computer:420575980198035456> <:wa:324446350211284992> :loudspeaker:  `[Main Computer] WA.Net# Announcement for` @everyone `. See attached.`\n"+announcement).then(function (message) {
               this.addReaction("👍", msg.author)
               this.addReaction("👍", msg.author)
               //message.pin()
